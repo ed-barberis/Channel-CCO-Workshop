@@ -1,0 +1,51 @@
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+
+/artifacts/
+/builders/**/shared
+/provisioners/**/*.live
+/provisioners/**/*.orig
+
+# ignore aws generated policies.
+/provisioners/scripts/aws/policies/FSOLabTEAgentDeployment.json
+
+# ignore appdynamics license configuration files.
+/shared/**/appd-controller-license.lic
+
+# ignore packer google cloud platform (gcp) iam service account key files.
+/shared/**/gcp-devops.json
+
+# ignore terraform configuration and temporary runtime files.
+/builders/**/private-ip-file.txt
+/builders/**/public-dns-file.txt
+/builders/**/*-urls.txt
+/builders/**/*.inventory
+/builders/**/.terraform
+/builders/**/.terraform.lock.hcl
+/builders/**/*.tfstate*
+/builders/**/*.tfplan
+/builders/**/terraform.tfvars
+
+# ignore ansible configuration and temporary runtime files.
+ansible.cfg
+/provisioners/**/*.inventory
+/provisioners/**/public-keys*
+/provisioners/**/files/*_elb_dns_name.txt
+
+# ignore photoshop image files.
+/docs/**/*.psd
+/workshops/**/*.psd
+
+# ignore 'live' bash resource configuration file for appdynamics cnao lab devops users.
+/bin/set_devops_env.sh
+
+# macOS .DS_Store files.
+.DS_Store
