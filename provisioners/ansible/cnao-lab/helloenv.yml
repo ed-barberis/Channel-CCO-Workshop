@@ -1,0 +1,39 @@
+---
+- name: hello env
+  hosts: all
+  gather_facts: yes
+  any_errors_fatal: yes
+
+  vars:
+    env_vars:
+      iks_kubeconfig_filepath: "{{ lookup('env', 'iks_kubeconfig_filepath') | default(ansible_env.HOME + '/AppD-FSO-Lab-02-kubeconfig.yaml', true) }}"
+      eks_kubeconfig_filepath: "{{ lookup('env', 'eks_kubeconfig_filepath') | default(ansible_env.HOME + '/.kube/config', true) }}"
+      kubectl_pause_time: "{{ lookup('env', 'kubectl_pause_time') | default('90', true) }}"
+
+  tasks:
+    - name: print iks kubeconfig filepath env
+      shell: 'echo "iks_kubeconfig_filepath: ${iks_kubeconfig_filepath}"'
+      environment: "{{ env_vars }}"
+      register: print_iks_kubeconfig_filepath
+
+    - name: print iks kubeconfig filepath env results
+      debug:
+        var: print_iks_kubeconfig_filepath.stdout_lines
+
+    - name: print eks kubeconfig filepath env
+      shell: "echo \"eks_kubeconfig_filepath: ${eks_kubeconfig_filepath}\""
+      environment: "{{ env_vars }}"
+      register: print_eks_kubeconfig_filepath
+
+    - name: print eks kubeconfig filepath env results
+      debug:
+        var: print_eks_kubeconfig_filepath.stdout_lines
+
+    - name: print kubectl pause time env
+      shell: "echo \"kubectl_pause_time: ${kubectl_pause_time}\""
+      environment: "{{ env_vars }}"
+      register: print_kubectl_pause_time
+
+    - name: print kubectl pause time env results
+      debug:
+        var: print_kubectl_pause_time.stdout_lines

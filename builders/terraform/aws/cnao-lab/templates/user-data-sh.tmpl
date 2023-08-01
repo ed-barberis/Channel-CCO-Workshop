@@ -1,0 +1,20 @@
+#!/bin/sh
+cd /opt/cnao-lab-devops/provisioners/scripts/aws
+chmod 755 ./initialize_aws_cnao_lab_cloud_init.sh
+
+user_name="${aws_ec2_user_name}"
+export user_name
+aws_ec2_hostname="${aws_ec2_hostname}"
+export aws_ec2_hostname
+aws_ec2_domain="${aws_ec2_domain}"
+export aws_ec2_domain
+aws_region_name="${aws_region_name}"
+export aws_region_name
+use_aws_ec2_num_suffix="${use_aws_ec2_num_suffix}"
+export use_aws_ec2_num_suffix
+aws_eks_cluster_name="${aws_eks_cluster_name}"
+export aws_eks_cluster_name
+lab_number="${lab_number}"
+export lab_number
+
+./initialize_aws_cnao_lab_cloud_init.sh

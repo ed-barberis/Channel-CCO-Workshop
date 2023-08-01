@@ -1,0 +1,12 @@
+---
+- name: hello user
+  hosts: all
+  gather_facts: yes
+  any_errors_fatal: yes
+  environment:
+    appd_platform_user_name: "{{ lookup('env', 'appd_platform_user_name') | default('appduser', true) }}"
+
+  tasks:
+    - name: print hello user
+      debug:
+        msg: Hello, {{ ansible_env.appd_platform_user_name }}!

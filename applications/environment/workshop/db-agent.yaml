@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: db-agent
+spec: 
+  selector:
+    matchLabels:
+      name: db-agent
+  template: 
+    metadata: 
+      labels: 
+        name: db-agent
+    spec:
+      serviceAccountName: appdynamics-infraviz
+      containers:
+      - name: db-agent
+        image: docker.io/appdynamics/db-agent:21.12.2
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: db-config
+        resources:
+          limits:
+            cpu: "2"
+            memory: "2G"
+          requests:
+            cpu: "1"
+            memory: "1G"
+        volumeMounts:
+        - name: db-log-volume
+          mountPath: /opt/appdynamics/conf/logging/log4j.xml
+          subPath: log4j.xml
+      restartPolicy: Always
+      volumes:
+      - name: db-log-volume
+        configMap:
+          name: db-log-config
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+    name: appdynamics-infraviz
+    namespace: default

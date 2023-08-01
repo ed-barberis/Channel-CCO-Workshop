@@ -1,0 +1,72 @@
+#!/bin/sh
+# bash resource configuration template for channel cnao workshop users.
+# rename and remove the '.template'.
+
+# --------------------------------------------------------------------------------------------------
+# set cnao labs devops home.
+# --------------------------------------------------------------------------------------------------
+# [optional] devops home (defaults to '/opt/cnao-lab-devops').
+devops_home="/opt/cnao-lab-devops"
+export devops_home
+
+# [optional] aws create user install parameters [w/ defaults].
+#aws_user_name="cnao-lab-user"
+#export aws_user_name
+#aws_user_password="<your_cnao_user_password_here>"
+#export aws_user_password
+#aws_group_name="cnao-lab-group"
+#export aws_group_name
+local_devops_home="$HOME/projects/Channel-CNAO-Workshop"
+export local_devops_home
+
+# --------------------------------------------------------------------------------------------------
+# amazon aws environment parameters.
+# --------------------------------------------------------------------------------------------------
+# set amazon aws cli credentials (cisco-runon).
+AWS_ACCESS_KEY_ID="<your_AWS_ACCESS_KEY_ID_here>"
+export AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY="<your_AWS_SECRET_ACCESS_KEY_here>"
+export AWS_SECRET_ACCESS_KEY
+unset AWS_SESSION_TOKEN
+
+# [optional] configure aws cli for user? [boolean] (defaults to 'false').
+aws_cli_user_config="false"
+export aws_cli_user_config
+
+# NOTE: Setting 'aws_cli_user_config' to 'true' allows you to perform the AWS CLI configuration concurrently
+#       with the installation. When 'true', the following environment variables are used for the
+#       configuration. To successfully connect to your AWS environment, you should set 'AWS_ACCESS_KEY_ID'
+#       and 'AWS_SECRET_ACCESS_KEY'.
+
+# [optional] aws cli default region name (defaults to 'us-east-2' [Ohio]).
+aws_cli_default_region_name="us-east-2"
+export aws_cli_default_region_name
+
+# [optional] aws cli default output format (defaults to 'json').
+#            valid output formats:
+#              'json', 'text', 'table'
+#aws_cli_default_output_format="json"
+#export aws_cli_default_output_format
+
+# aws ami owner tag for packer build ami's.
+aws_ami_owner="<your_firstname_here> <your_lastname_here>"
+export aws_ami_owner
+
+# aws region to create packer build ami's.
+aws_ami_region="us-east-2"
+export aws_ami_region
+
+# source cidrs used by packer when creating a temporary security group for image builds (defaults to '0.0.0.0/0').
+aws_ec2_temporary_source_cidrs="0.0.0.0/0"
+export aws_ec2_temporary_source_cidrs
+
+# --------------------------------------------------------------------------------------------------
+# organization environment parameters.
+# --------------------------------------------------------------------------------------------------
+# set variables for aws resource tagging.
+org_cost_center="<your_org_cost_center_here>"
+export org_cost_center
+aws_user_arn="$(aws sts get-caller-identity --query "Arn" --output text)"
+export aws_user_arn
+aws_user_email="<your_aws_user_email_address_here>"
+export aws_user_email

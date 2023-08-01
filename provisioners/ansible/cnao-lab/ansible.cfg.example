@@ -1,0 +1,11 @@
+[defaults]
+remote_user = ec2-user
+host_key_checking = no
+inventory = aws_hosts.inventory
+private_key_file = ~/.ssh/Channel-CNAO-Workshop.pem
+
+[privilege_escalation]
+become = no
+become_method = sudo
+become_user = root
+become_ask_pass = no

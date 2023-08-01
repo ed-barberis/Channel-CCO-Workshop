@@ -1,0 +1,46 @@
+##################################################################################
+
+### 1. Ensure Lab Number vairable is set 
+
+echo $fso_lab_number
+
+##################################################################################
+
+### 2. Ensure IKS Kubeconfig Filepath variable is set
+
+echo $iks_kubeconfig_filepath
+
+##################################################################################
+
+### 3. Deploy the TeaStore application to both Kubernetes clusters
+
+cd /opt/cnao-lab-devops/provisioners/scripts/common
+
+./deploy_teastore_application_to_hybrid_kubernetes.sh
+
+##################################################################################
+
+### 4. Confirm that pods are deployed on both clusters
+
+# Check IKS pods
+kubectl get pods -o wide --kubeconfig $iks_kubeconfig_filepath
+
+# Check EKS pods
+kubectl get pods -o wide
+
+##################################################################################
+
+### 5. Run the workshop utilities setup
+
+cd /home/ec2-user/environment/workshop
+
+./setupWorkshop.sh
+
+##################################################################################
+
+### 6. Deploy AppDynamics agents to both Kubernetes clusters 
+
+cd /home/ec2-user/environment/workshop
+
+./deploy_appdynamics_agents_to_hybrid_kubernetes.sh
+

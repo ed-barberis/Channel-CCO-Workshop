@@ -1,0 +1,45 @@
+#!/bin/bash
+
+#
+# Script to undeploy AppDynamics Agents from two different Kubernetes clusters using a Helm chart.
+#
+# The Helm chart is configured to undeploy the following agent types:
+#
+# - Cluster Agent
+# - Java Agent - requires application restart
+# - ServerMonitoring Agent
+# - NetViz Agent
+#
+
+# set default values for input environment variables if not set. -----------------------------------
+# [MANDATORY] appdynamics agents deploy parameters [w/ defaults].
+iks_kubeconfig_filepath="${iks_kubeconfig_filepath:-}"
+
+# [OPTIONAL] appdynamics agents deploy parameters [w/ defaults].
+eks_kubeconfig_filepath="${eks_kubeconfig_filepath:-${HOME}/.kube/config}"
+
+# uninstall the appdynamics agents. ----------------------------------------------------------------
+# uninstall the appdynamics agents from the IKS cluster
+helm uninstall "@[ADWRKSHP_CLUSTER_AGENT_NAME_01]" --namespace=appdynamics --kubeconfig $iks_kubeconfig_filepath
+
+# uninstall the appdynamics agents from the EKS cluster
+helm uninstall "@[ADWRKSHP_CLUSTER_AGENT_NAME_02]" --namespace=appdynamics --kubeconfig $eks_kubeconfig_filepath
+
+# remove appdynamics custom resource definitions (crds). -------------------------------------------
+# remove appdynamics crds from intersight iks.
+echo "Removing AppDynamics Custom Resource Definitions (CRDs) from Intersight IKS..."
+kubectl delete crds clusteragents.cluster.appdynamics.com --kubeconfig $iks_kubeconfig_filepath
+kubectl delete crds infravizs.cluster.appdynamics.com --kubeconfig $iks_kubeconfig_filepath
+echo ""
+
+# remove appdynamics crds from aws.
+echo "Removing AppDynamics Custom Resource Definitions (CRDs) from AWS EKS..."
+kubectl delete crds clusteragents.cluster.appdynamics.com --kubeconfig $eks_kubeconfig_filepath
+kubectl delete crds infravizs.cluster.appdynamics.com --kubeconfig $eks_kubeconfig_filepath
+echo ""
+
+# create appdynamics namespace in the IKS cluster
+#kubectl create namespace appdynamics --kubeconfig $iks_kubeconfig_filepath
+
+# create appdynamics namespace in the EKS cluster
+#kubectl create namespace appdynamics --kubeconfig $eks_kubeconfig_filepath

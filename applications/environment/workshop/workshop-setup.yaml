@@ -1,0 +1,354 @@
+!!com.appdynamics.cloud.modern.config.SetupConfig
+
+description: "FSO Workshop Setup"
+teardownFilePath: "./workshop-teardown.yaml"
+setupProgressDirectory: "./"
+setupStepsFileName: "appd_workshop_setup.txt"
+cloudProvider: "aws"
+debugLogging: false
+
+
+# if machine agents are deployed, their ids must be collected
+# before the applications are stopped
+teardownScript: "./undeploy_all_from_kubernetes_hybrid.sh"
+
+
+taskExecutionOrder:
+  - taskType: "SHELL_TASK"
+    taskName: "update-intersight-public-key"
+  - taskType: "SHELL_TASK"
+    taskName: "update-intersight-private-key"
+  - taskType: "SHELL_TASK"
+    taskName: "update-db-agent-conf"
+  - taskType: "SHELL_TASK"
+    taskName: "deploy-db-agent"
+  - taskType: "SHELL_TASK"
+    taskName: "update-deploy-agents-sh"
+  - taskType: "SHELL_TASK"
+    taskName: "update-undeploy-agents-sh"
+#  - taskType: "CONTROLLER_INIT_TASKS"
+#    taskName: ""
+  - taskType: "CONTROLLER_TASKS"
+    taskName: ""
+
+    
+shellTasks:
+  - taskType: "SHELL_TASK_UPDATE_EXTERNAL_FILE"
+    taskName: "update-intersight-public-key"
+    inputTags:
+      - tagKey: "@[ADWRKSHP_UPDATE_EXTERNAL_FILE_SOURCEFILE]"
+        tagValue: "../../iwo-action-integration/keys/iwo_public_key.txt"
+
+      - tagKey: "@[ADWRKSHP_UPDATE_EXTERNAL_FILE_DESTFILE]"
+        tagValue: "../../iwo-action-integration/keys/iwo_public_key.txt"
+
+      - tagKey: "@[ADWRKSHP_GET_INTERSIGHT_API_KEY_PUBLIC]"
+        tagValue: "true"
+
+  - taskType: "SHELL_TASK_UPDATE_EXTERNAL_FILE"
+    taskName: "update-intersight-private-key"
+    inputTags:
+      - tagKey: "@[ADWRKSHP_UPDATE_EXTERNAL_FILE_SOURCEFILE]"
+        tagValue: "../../iwo-action-integration/keys/iwo_private_key.pem"
+
+      - tagKey: "@[ADWRKSHP_UPDATE_EXTERNAL_FILE_DESTFILE]"
+        tagValue: "../../iwo-action-integration/keys/iwo_private_key.pem"
+
+      - tagKey: "@[ADWRKSHP_GET_INTERSIGHT_API_KEY_PRIVATE]"
+        tagValue: "true"
+
+  - taskType: "SHELL_TASK_EXECUTE_SHELL_SCRIPT"
+    taskName: "deploy-db-agent"
+    inputTags:
+      - tagKey: "@[ADWRKSHP_SHELL_SCRIPT_FILEPATH]"
+        tagValue: "./deploy_appdynamics_db_agent_to_kubernetes.sh"
+      - tagKey: "@[ADWRKSHP_SHELL_SCRIPT_BEGIN_MSG]"
+        tagValue: " - Starting Deployment of DB Agent to IKS Cluster"
+      - tagKey: "@[ADWRKSHP_SHELL_SCRIPT_END_MSG]"
+        tagValue: " - Finished Deployment of DB Agent to IKS Cluster"
+      - tagKey: "@[ADWRKSHP_SHELL_SCRIPT_INHERIT_IO]"
+        tagValue: "false"
+        
+        
+  - taskType: "SHELL_TASK_UPDATE_EXTERNAL_FILE"
+    taskName: "update-db-agent-conf"
+    inputTags:
+      - tagKey: "@[ADWRKSHP_UPDATE_EXTERNAL_FILE_SOURCEFILE]"
+        tagValue: "./db-config.yaml.template"
+
+      - tagKey: "@[ADWRKSHP_UPDATE_EXTERNAL_FILE_DESTFILE]"
+        tagValue: "./db-config.yaml"
+
+      - tagKey: "@[ADWRKSHP_CONTROLLER_HOST]"
+        tagValue: "@[ADWRKSHP_CONTROLLER_HOST]"
+        
+      - tagKey: "@[ADWRKSHP_CONTROLLER_ACCT_NAME]"
+        tagValue: "@[ADWRKSHP_CONTROLLER_ACCT_NAME]"
+
+      - tagKey: "@[ADWRKSHP_CONTROLLER_GLOBAL_ACCT_NAME]"
+        tagValue: "@[ADWRKSHP_CONTROLLER_GLOBAL_ACCT_NAME]"
+                
+      - tagKey: "@[ADWRKSHP_ACCT_ACCESS_KEY]"
+        tagValue: "@[ADWRKSHP_ACCT_ACCESS_KEY]"
+
+      - tagKey: "@[ADWRKSHP_CONTROLLER_PORT]"
+        tagValue: "@[ADWRKSHP_CONTROLLER_PORT]"
+
+      - tagKey: "@[ADWRKSHP_CONTROLLER_SSL_ENABLED]"
+        tagValue: "@[ADWRKSHP_CONTROLLER_SSL_ENABLED]"
+
+      - tagKey: "@[ADWRKSHP_DB_AGENT_NAME]"
+        tagValue: "@[ADWRKSHP_LABUSER_KEY]-dbagent"
+
+
+  - taskType: "SHELL_TASK_UPDATE_EXTERNAL_FILE"
+    taskName: "update-deploy-agents-sh"
+    inputTags:
+      - tagKey: "@[ADWRKSHP_UPDATE_EXTERNAL_FILE_SOURCEFILE]"
+        tagValue: "./deploy_appdynamics_agents_to_hybrid_kubernetes.sh.template"
+
+      - tagKey: "@[ADWRKSHP_UPDATE_EXTERNAL_FILE_DESTFILE]"
+        tagValue: "./deploy_appdynamics_agents_to_hybrid_kubernetes.sh"
+
+      - tagKey: "@[ADWRKSHP_HELM_CLUSTER_AGENT_DEPLOYMENT]"
+        tagValue: "true"
+
+      - tagKey: "@[ADWRKSHP_CLUSTER_AGENT_NAME_01]"
+        tagValue: "@[ADWRKSHP_LABUSER_KEY]-iks"
+        
+      - tagKey: "@[ADWRKSHP_CLUSTER_AGENT_NAME_02]"
+        tagValue: "@[ADWRKSHP_LABUSER_KEY]-eks"
+
+
+  - taskType: "SHELL_TASK_UPDATE_EXTERNAL_FILE"
+    taskName: "update-undeploy-agents-sh"
+    inputTags:
+      - tagKey: "@[ADWRKSHP_UPDATE_EXTERNAL_FILE_SOURCEFILE]"
+        tagValue: "./undeploy_appdynamics_agents_from_hybrid_kubernetes.sh.template"
+
+      - tagKey: "@[ADWRKSHP_UPDATE_EXTERNAL_FILE_DESTFILE]"
+        tagValue: "./undeploy_appdynamics_agents_from_hybrid_kubernetes.sh"
+
+      - tagKey: "@[ADWRKSHP_HELM_CLUSTER_AGENT_DEPLOYMENT]"
+        tagValue: "true"
+
+      - tagKey: "@[ADWRKSHP_CLUSTER_AGENT_NAME_01]"
+        tagValue: "@[ADWRKSHP_LABUSER_KEY]-iks"
+        
+      - tagKey: "@[ADWRKSHP_CLUSTER_AGENT_NAME_02]"
+        tagValue: "@[ADWRKSHP_LABUSER_KEY]-eks"
+
+
+templates:
+  - templateName: "cluster-agent-conf"
+    sourceFile: "./values-ca1.yaml.template"
+    destinationFile: "./values-ca2.yaml.template"
+    tags:
+      - tagKey: "${ADWRKSHP_CONTROLLER_URL_FULL}"
+        tagValue: "@[ADWRKSHP_CONTROLLER_URL_FULL]"
+        
+      - tagKey: "${ADWRKSHP_CONTROLLER_ACCT_NAME}"
+        tagValue: "@[ADWRKSHP_CONTROLLER_ACCT_NAME]"
+
+      - tagKey: "${ADWRKSHP_CONTROLLER_GLOBAL_ACCT_NAME}"
+        tagValue: "@[ADWRKSHP_CONTROLLER_GLOBAL_ACCT_NAME]"
+                
+      - tagKey: "${ADWRKSHP_APM_APP_NAME}"
+        tagValue: "@[ADWRKSHP_APM_APP_NAME_PRE]"
+
+#      - tagKey: "${ADWRKSHP_ACCT_ACCESS_KEY}"
+#        tagValue: "@[ADWRKSHP_ACCT_ACCESS_KEY]"
+
+#      - tagKey: "${ADWRKSHP_LABUSER_KEY}"
+#        tagValue: "@[ADWRKSHP_LABUSER_KEY]"
+        
+#      - tagKey: "${ADWRKSHP_LABUSER_PWD}"
+#        tagValue: "@[ADWRKSHP_LABUSER_PWD]"
+        
+
+
+  - templateName: "workshop-user-details"
+    sourceFile: "./workshop-user-details.txt.template"
+    destinationFile: "./workshop-user-details.txt"
+    tags:
+      - tagKey: "${ADWRKSHP_CONTROLLER_HOST}"
+        tagValue: "@[ADWRKSHP_CONTROLLER_HOST]"
+        
+      - tagKey: "${ADWRKSHP_CONTROLLER_ACCT_NAME}"
+        tagValue: "@[ADWRKSHP_CONTROLLER_ACCT_NAME]"
+        
+      - tagKey: "${ADWRKSHP_LABUSER_KEY}"
+        tagValue: "@[ADWRKSHP_LABUSER_KEY]"
+        
+      - tagKey: "${ADWRKSHP_LABUSER_PWD}"
+        tagValue: "@[ADWRKSHP_LABUSER_PWD]"
+
+      - tagKey: "${ADWRKSHP_APM_APP_NAME_PRE}"
+        tagValue: "@[ADWRKSHP_APM_APP_NAME_PRE]"
+
+
+
+controllerInitTasks:
+
+# !!! The license rule creation task should be the very first controller init task
+# NEW IBL LICENSE RULE TAG KEYS
+#  - taskType: "CONTROLLER_TASK_CREATE_IBL_LICENSE_RULE"
+#    taskName: "create-license-rule"
+#    inputTags:
+#      - tagKey: "@[ADWRKSHP_LICENSE_RULE_NAME]"
+#        tagValue: "@[ADWRKSHP_LABUSER_KEY]-rule"
+#      - tagKey: "@[ADWRKSHP_IBL_LICENSE_RULE_ACCT_ID]"
+#        tagValue: "23458"
+#      - tagKey: "@[ADWRKSHP_IBL_LICENSE_RULE_NBR_ENTR]"
+#        tagValue: "24"
+#      - tagKey: "@[ADWRKSHP_IBL_LICENSE_RULE_NBR_PREM]"
+#        tagValue: "0"
+# after settling in number of licenses used = 24 but spiked to 48 at initial deployment
+
+
+controllerTasks:
+
+  - taskType: "CONTROLLER_TASK_CREATE_APM_APP"
+    taskName: "create-apm-app-01"
+    inputTags:
+      - tagKey: "@[ADWRKSHP_APM_APP_NAME_PRE]"
+        tagValue: "@[ADWRKSHP_LABUSER_KEY]"
+        
+    templateTargets:    
+      - templateName: "cluster-agent-conf"
+        targetTags:
+          - tagKey: "${ADWRKSHP_APM_APP_NAME}"
+            tagValue: "@[ADWRKSHP_APM_APP_NAME_PRE]"
+            
+      - templateName: "workshop-user-details"
+        targetTags:
+          - tagKey: "${ADWRKSHP_APM_APP_NAME_PRE}"
+            tagValue: "@[ADWRKSHP_APM_APP_NAME_PRE]"    
+
+
+
+  - taskType: "CONTROLLER_TASK_CREATE_DB_COLLECTOR"
+    taskName: "fso-db-collector"
+    inputTags:
+      - tagKey: "@[ADWRKSHP_CLOUD_DB_INST_NAME]"
+        tagValue: "@[ADWRKSHP_LABUSER_KEY]-mysql"
+      - tagKey: "@[ADWRKSHP_CLOUD_DB_INST_TYPE]"
+        tagValue: "MYSQL"    
+      - tagKey: "@[ADWRKSHP_DB_AGENT_NAME]"
+        tagValue: "@[ADWRKSHP_LABUSER_KEY]-dbagent"
+      - tagKey: "@[ADWRKSHP_CLOUD_DB_INST_PORT]"
+        tagValue: "3306"
+      - tagKey: "@[ADWRKSHP_CLOUD_DB_INST_USER]"
+        tagValue: "root"    
+      - tagKey: "@[ADWRKSHP_CLOUD_DB_INST_PWD]"
+        tagValue: "rootpassword"    
+      - tagKey: "@[ADWRKSHP_CLOUD_DB_INST_ENDPOINT]"
+        tagValue: "teastore-db"     
+
+
+#  - taskType: "CONTROLLER_TASK_SET_DASHBOARD_PERMISSIONS"
+#    taskName: "set-dashboard-access-loancomp"
+#    inputTags:
+#      - tagKey: "@[ADWRKSHP_DASHBOARD_ID]"
+#        tagValue: "376039"    
+#      - tagKey: "@[ADWRKSHP_DASHBOARD_ACTION_VIEW]"
+#        tagValue: "true"    
+#      - tagKey: "@[ADWRKSHP_DASHBOARD_ACTION_EDIT]"
+#        tagValue: "false"
+#      - tagKey: "@[ADWRKSHP_DASHBOARD_ACTION_DELETE]"
+#        tagValue: "false"
+#      - tagKey: "@[ADWRKSHP_DASHBOARD_ACTION_SHARE]"
+#        tagValue: "false"    
+
+
+
+  - taskType: "CONTROLLER_TASK_COPY_DASHBOARD"
+    taskName: "copy1-fso-hybrid-dashboard"
+    inputTags:
+      - tagKey: "@[ADWRKSHP_DASHBOARD_NAME]"
+        tagValue: "@[ADWRKSHP_LABUSER_KEY]"  # the name of the new copy of the dashboard
+      - tagKey: "@[ADWRKSHP_DASHBOARD_ID]"  # the id of the dashboard you want to make a copy of
+        tagValue: "379257"
+      - tagKey: "@[ADWRKSHP_DASHBOARD_ACTION_VIEW]"
+        tagValue: "true"    
+      - tagKey: "@[ADWRKSHP_DASHBOARD_ACTION_EDIT]"
+        tagValue: "true"
+      - tagKey: "@[ADWRKSHP_DASHBOARD_ACTION_DELETE]"
+        tagValue: "false"
+      - tagKey: "@[ADWRKSHP_DASHBOARD_ACTION_SHARE]"
+        tagValue: "false"    
+
+
+
+ # !!!! Ensure that this is the last controller task in the list of
+ # controller tasks defined in this file, otherwise permissions for 
+ # some objects created in the controller may be omitted
+ # 
+ # This task not only creates the RBAC User but also creates the RBAC Role
+ # for the user and links the user to the role
+  - taskType: "CONTROLLER_TASK_CREATE_RBAC_USER"
+    taskName: "create-rbac-user"
+
+    inputTags:
+      - tagKey: "@[ADWRKSHP_DEFAULT_RBAC_ROLE_IDS]"
+        tagValue: "286308,286387,286459,288668"
+      - tagKey: "@[ADWRKSHP_READONLY_RBAC_APP_IDS]"
+        tagValue: "1224927"
+
+    templateTargets:   
+      - templateName: "cluster-agent-conf"
+        targetTags:
+          - tagKey: "${ADWRKSHP_CONTROLLER_URL_FULL}"
+            tagValue: "@[ADWRKSHP_CONTROLLER_URL_FULL]"
+
+          - tagKey: "${ADWRKSHP_CONTROLLER_ACCT_NAME}"
+            tagValue: "@[ADWRKSHP_CONTROLLER_ACCT_NAME]"    
+
+          - tagKey: "${ADWRKSHP_CONTROLLER_GLOBAL_ACCT_NAME}"
+            tagValue: "@[ADWRKSHP_CONTROLLER_GLOBAL_ACCT_NAME]"    
+
+#          - tagKey: "${ADWRKSHP_ACCT_ACCESS_KEY}"
+#            tagValue: "@[ADWRKSHP_ACCT_ACCESS_KEY]"
+
+#          - tagKey: "${ADWRKSHP_LABUSER_KEY}"
+#            tagValue: "@[ADWRKSHP_LABUSER_KEY]"
+
+#          - tagKey: "${ADWRKSHP_LABUSER_PWD}"
+#            tagValue: "@[ADWRKSHP_LABUSER_PWD]"    
+
+
+      - templateName: "workshop-user-details"
+        targetTags:
+          - tagKey: "${ADWRKSHP_CONTROLLER_HOST}"
+            tagValue: "@[ADWRKSHP_CONTROLLER_HOST]"    
+
+          - tagKey: "${ADWRKSHP_CONTROLLER_ACCT_NAME}"
+            tagValue: "@[ADWRKSHP_CONTROLLER_ACCT_NAME]"    
+
+          - tagKey: "${ADWRKSHP_LABUSER_KEY}"
+            tagValue: "@[ADWRKSHP_LABUSER_KEY]"    
+
+          - tagKey: "${ADWRKSHP_LABUSER_PWD}"
+            tagValue: "@[ADWRKSHP_LABUSER_PWD]"    
+
+
+            
+            
+cloudTasks:
+
+
+vaultInfo:
+  vaultHost: 
+  validateSsl: false
+  authStr: 
+  uriPaths:
+    - name: auth
+      value: /v1/auth/userpass/login/cloud-team
+    - name: controller-info
+      value: /v1/kv/cloud-labs/controller-info
+    - name: controller-login-info
+      value: /v1/kv/cloud-labs/controller-login-info
+    - name: dbagent-s3-auth
+      value: /v1/kv/cloud-labs/dbagent-s3-auth
+    - name: intersight-info
+      value: /v1/kv/cloud-labs/intersight-info
