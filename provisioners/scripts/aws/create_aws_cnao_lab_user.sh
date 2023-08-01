@@ -22,7 +22,7 @@
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] aws create user install parameters [w/ defaults].
 aws_user_name="${aws_user_name:-cnao-lab-user}"
-aws_user_password="${aws_user_password:-C1sc0Cnao2024!!}"
+aws_user_password="${aws_user_password:-}"
 aws_group_name="${aws_group_name:-cnao-lab-group}"
 local_devops_home="${local_devops_home:-${HOME}/Channel-CNAO-Workshop}"
 
@@ -46,6 +46,13 @@ EOF
 }
 
 # validate environment variables. ------------------------------------------------------------------
+# check if aws user password was set.
+if [ -z "$aws_user_password" ]; then
+  echo "Error: 'aws_user_password' environment variable not set."
+  usage
+  exit 1
+fi
+
 # check if aws group already exists.
 aws_group=$(aws iam list-groups | jq -r --arg AWS_GROUP_NAME "${aws_group_name}" '.Groups[] | select(.GroupName | contains($AWS_GROUP_NAME)) | .GroupName')
 
