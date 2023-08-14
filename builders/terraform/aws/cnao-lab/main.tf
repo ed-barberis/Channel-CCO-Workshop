@@ -221,7 +221,7 @@ module "vm" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = ">= 19.15.4"
+  version = ">= 19.16.0"
 
   cluster_name    = local.cluster_name
   cluster_version = var.aws_eks_kubernetes_version
