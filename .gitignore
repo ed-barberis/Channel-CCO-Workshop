@@ -34,6 +34,10 @@ tags
 /builders/**/*.tfplan
 /builders/**/terraform.tfvars
 
+# ignore appdynamics operators and collectors helm charts.
+/builders/**/collectors-values.yaml
+/builders/**/operators-values.yaml
+
 # ignore ansible configuration and temporary runtime files.
 ansible.cfg
 /provisioners/**/*.inventory
