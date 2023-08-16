@@ -74,8 +74,8 @@ variable "aws_ec2_source_ami_filter" {
 variable "aws_ec2_instance_type" {
   description = "AWS EC2 instance type."
   type        = string
-# default     = "t2.micro"
-  default     = "t2.large"
+# default     = "t3.micro"
+  default     = "t3.large"
 }
 
 variable "lab_number" {
@@ -125,8 +125,9 @@ variable "aws_eks_max_node_count" {
 variable "aws_eks_instance_type" {
   description = "AWS EKS Node Group instance type."
   type        = list(string)
-# default     = ["m5a.large"]
-  default     = ["m5a.xlarge"]
+  default     = ["t3.large"]
+# default     = ["m5d.large"]
+# default     = ["m5d.xlarge"]
 }
 
 # valid aws eks versions are: 1.23, 1.24, 1.25, 1.26, and 1.27.

@@ -181,7 +181,7 @@
     "aws_ec2_boot_disk_size": "48",
     "aws_ec2_hostname": "cnao-lab",
     "aws_ec2_domain": "localdomain",
-    "aws_ec2_instance_type": "t2.large",
+    "aws_ec2_instance_type": "t3.large",
     "aws_ec2_username": "ec2-user",
     "aws_ec2_group": "ec2-user",
     "aws_ec2_temporary_source_cidrs": "{{env `aws_ec2_temporary_source_cidrs`}}",
