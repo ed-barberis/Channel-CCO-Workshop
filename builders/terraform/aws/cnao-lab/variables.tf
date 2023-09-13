@@ -125,9 +125,8 @@ variable "aws_eks_max_node_count" {
 variable "aws_eks_instance_type" {
   description = "AWS EKS Node Group instance type."
   type        = list(string)
-  default     = ["t3.large"]
-# default     = ["m5d.large"]
-# default     = ["m5d.xlarge"]
+# default     = ["t3a.large"]
+  default     = ["t3a.xlarge"]
 }
 
 # valid aws eks versions are: 1.23, 1.24, 1.25, 1.26, and 1.27.
