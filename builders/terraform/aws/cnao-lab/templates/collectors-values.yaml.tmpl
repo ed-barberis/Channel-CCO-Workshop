@@ -1,0 +1,24 @@
+global:
+  clusterName: ${cluster_name}
+appdynamics-cloud-k8s-monitoring:
+  global:
+    clusterName: ${cluster_name}
+  install:
+    clustermon: true
+    defaultInfraCollectors: true
+    logCollector: ${install_log_collector}
+  logCollectorConfig:
+    container:
+      defaultConfig:
+        multiLinePattern: '^{'
+        multiLineMatch: "after"
+        multiLineNegate: true
+        logFormat: "logs:email_logs"
+        messageParser:
+          json:
+            enabled: true
+appdynamics-otel-collector:
+  clientId: ${client_id}
+  clientSecret: ${client_secret}
+  endpoint: ${collector_endpoint}
+  tokenUrl: ${token_url}
