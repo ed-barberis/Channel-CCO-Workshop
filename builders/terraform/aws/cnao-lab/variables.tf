@@ -181,7 +181,7 @@ variable "resource_owner_email_tag" {
 variable "resource_cost_center_tag" {
   description = "Resource cost center tag."
   type        = string
-  default     = "020430800"
+  default     = "020430801"
 }
 
 variable "map_roles" {
