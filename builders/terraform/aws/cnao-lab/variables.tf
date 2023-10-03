@@ -129,7 +129,7 @@ variable "aws_eks_instance_type" {
   default     = ["t3a.xlarge"]
 }
 
-# valid aws eks versions are: 1.23, 1.24, 1.25, 1.26, and 1.27.
+# valid aws eks versions are: 1.24, 1.25, 1.26, 1.27, and 1.28.
 variable "aws_eks_kubernetes_version" {
   description = "Kubernetes version to use for the EKS cluster."
   type        = string
