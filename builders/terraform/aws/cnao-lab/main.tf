@@ -213,15 +213,15 @@ module "vm" {
     aws_region_name        = var.aws_region
     use_aws_ec2_num_suffix = "true"
     aws_eks_cluster_name   = local.cluster_name
-    iks_cluster_name       = "${local.lab_resource_prefix}-IKS"
-    iks_kubeconfig_file    = "${local.lab_resource_prefix}-IKS-kubeconfig.yml"
+    cnao_k8s_apm_name      = lower(local.cluster_name)
+    cnao_lab_id            = lower(trimsuffix(local.cluster_name, "-EKS"))
     lab_number             = var.lab_number
   }))
 }
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = ">= 19.16.0"
+  version = ">= 19.17.1"
 
   cluster_name    = local.cluster_name
   cluster_version = var.aws_eks_kubernetes_version

@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2023/07/12 SMI
+# @(#).bashrc       1.0 2023/10/09 SMI
 # bash resource configuration for cnao lpad users.
 
 # source global definitions.
@@ -66,6 +66,12 @@ export aws_eks_cluster_name
 
 eks_kubeconfig_filepath="$HOME/.kube/config"
 export eks_kubeconfig_filepath
+
+cnao_k8s_apm_name="cnao-lab-01-abcde-eks"
+export cnao_k8s_apm_name
+
+cnao_lab_id="cnao-lab-01-abcde"
+export cnao_lab_id
 
 cnao_lab_number="01"
 export cnao_lab_number
@@ -142,10 +148,6 @@ function netstatgrep {
   netstat -an | grep "Active\|Proto\|$@"
 }
 
-function teastoreurl {
-  WEBUI_LOADBALANCER_HOST=$(kubectl get services teastore-webui --output json | jq -r '.status.loadBalancer.ingress[0].hostname')
-  export WEBUI_LOADBALANCER_HOST
-  TEASTORE_URL="http://${WEBUI_LOADBALANCER_HOST}:8080/tools.descartes.teastore.webui/"
-  export TEASTORE_URL
-  echo "TEASTORE_URL: ${TEASTORE_URL}"
+function oteldemourl {
+  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "http://%s:%s/\n", $4, substr($5,0,index($5,":")-1)}'
 }

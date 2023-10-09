@@ -8,7 +8,9 @@ aws_ec2_hostname="${aws_ec2_hostname:-cnao-lab-vm}"
 aws_ec2_domain="${aws_ec2_domain:-localdomain}"
 aws_region_name="${aws_region_name:-us-east-2}"
 use_aws_ec2_num_suffix="${use_aws_ec2_num_suffix:-true}"
-aws_eks_cluster_name="${aws_eks_cluster_name:-cnao-lab-xxxxx-eks-cluster}"
+aws_eks_cluster_name="${aws_eks_cluster_name:-CNAO-Lab-01-abcde-EKS}"
+cnao_k8s_apm_name="${cnao_k8s_apm_name:-cnao-lab-01-abcde-eks}"
+cnao_lab_id="${cnao_lab_id:-cnao-lab-01-abcde}"
 lab_number="${lab_number:-1}"
 
 # configure public keys for specified user. --------------------------------------------------------
@@ -82,6 +84,8 @@ fi
 # use the stream editor to substitute the new values.
 sed -i -e "/^aws_region_name/s/^.*$/aws_region_name=\"${aws_region_name}\"/" ${user_bash_config_file}
 sed -i -e "/^aws_eks_cluster_name/s/^.*$/aws_eks_cluster_name=\"${aws_eks_cluster_name}\"/" ${user_bash_config_file}
+sed -i -e "/^cnao_k8s_apm_name/s/^.*$/cnao_k8s_apm_name=\"${cnao_k8s_apm_name}\"/" ${user_bash_config_file}
+sed -i -e "/^cnao_lab_id/s/^.*$/cnao_lab_id=\"${cnao_lab_id}\"/" ${user_bash_config_file}
 sed -i -e "/^eks_kubeconfig_filepath/s/^.*$/eks_kubeconfig_filepath=\"\$HOME\/.kube\/config\"/" ${user_bash_config_file}
 sed -i -e "/^cnao_lab_number/s/^.*$/cnao_lab_number=\"${cnao_lab_number}\"/" ${user_bash_config_file}
 
