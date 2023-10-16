@@ -80,6 +80,11 @@
       "type": "file"
     },
     {
+      "destination": "/home/{{user `aws_ec2_username`}}/otel-demo-webstore-override.yaml",
+      "source": "{{template_dir}}/../../../applications/environment/workshop/otel-demo-webstore-override.yaml",
+      "type": "file"
+    },
+    {
       "inline": [
         "sudo chown -R root:root {{user `devops_home`}}"
       ],
