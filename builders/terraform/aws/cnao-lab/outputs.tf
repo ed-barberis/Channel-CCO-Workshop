@@ -79,6 +79,11 @@ output "aws_eks_instance_type" {
   value       = var.aws_eks_instance_type
 }
 
+output "aws_eks_instance_disk_size" {
+  description = "Disk size for AWS EKS Node instances."
+  value       = var.aws_eks_instance_disk_size
+}
+
 output "aws_eks_kubernetes_version" {
   description = "Kubernetes version to use for the EKS cluster."
   value       = var.aws_eks_kubernetes_version
