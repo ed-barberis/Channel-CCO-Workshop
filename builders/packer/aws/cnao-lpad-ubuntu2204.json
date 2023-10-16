@@ -75,6 +75,11 @@
       "type": "file"
     },
     {
+      "destination": "/home/{{user `aws_ec2_username`}}/enable_cnao_collectors_logging_config.sh",
+      "source": "{{template_dir}}/../../../applications/environment/workshop/enable_cnao_collectors_logging_config.sh",
+      "type": "file"
+    },
+    {
       "inline": [
         "sudo chown -R root:root {{user `devops_home`}}"
       ],

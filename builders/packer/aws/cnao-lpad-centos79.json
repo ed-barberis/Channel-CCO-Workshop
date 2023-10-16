@@ -190,7 +190,7 @@
     "user_docker_profile": "true",
     "docker_completion_release": "24.0.6",
     "nodejs_release": "16",
-    "npm_release": "9.8.1",
+    "npm_release": "9.9.0",
     "devops_home": "/opt/cnao-lab-devops",
     "org_cost_center": "{{env `org_cost_center`}}"
   }
