@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2023/10/16 SMI
+# @(#).bashrc       1.0 2023/10/18 SMI
 # bash resource configuration for cnao lpad users.
 
 # source global definitions.
@@ -150,12 +150,16 @@ function netstatgrep {
 
 function otel_demo_urls {
   echo ""
+  echo "------------------------------------------------------------------------------------------------------------------------"
   echo "OpenTelemetry Demo Application URLs"
+  echo "------------------------------------------------------------------------------------------------------------------------"
   echo "  The following services will be available once the Load Balancer has completed its Health checks:"
-  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "  Webstore:          http://%s:%s/\n", $4, substr($5,0,index($5,":")-1)}'
-  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "  Grafana:           http://%s:%s/grafana/\n", $4, substr($5,0,index($5,":")-1)}'
-  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "  Feature Flags UI:  http://%s:%s/feature/\n", $4, substr($5,0,index($5,":")-1)}'
-  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "  Load Generator UI: http://%s:%s/loadgen/\n", $4, substr($5,0,index($5,":")-1)}'
-  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "  Jaeger UI:         http://%s:%s/jaeger/ui/\n", $4, substr($5,0,index($5,":")-1)}'
+  echo ""
+  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Webstore:          http://%s:%s/\n", $4, substr($5,0,index($5,":")-1)}'
+  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Grafana:           http://%s:%s/grafana/\n", $4, substr($5,0,index($5,":")-1)}'
+  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Feature Flags UI:  http://%s:%s/feature/\n", $4, substr($5,0,index($5,":")-1)}'
+  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Load Generator UI: http://%s:%s/loadgen/\n", $4, substr($5,0,index($5,":")-1)}'
+  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Jaeger UI:         http://%s:%s/jaeger/ui/\n", $4, substr($5,0,index($5,":")-1)}'
+  echo "------------------------------------------------------------------------------------------------------------------------"
   echo ""
 }
