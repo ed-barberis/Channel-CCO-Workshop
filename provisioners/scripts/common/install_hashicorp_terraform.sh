@@ -28,9 +28,9 @@
 #---------------------------------------------------------------------------------------------------
 
 # install hashicorp terraform. ---------------------------------------------------------------------
-terraform_release="1.6.1"
+terraform_release="1.6.2"
 terraform_binary="terraform_${terraform_release}_linux_amd64.zip"
-terraform_sha256="d1a778850cc44d9348312c9527f471ea1b7a9213205bb5091ec698f3dc92e2a6"
+terraform_sha256="107142241b12ff78b6eb9c419757d406a8714704f7928750a662ba19de055e98"
 
 # create local bin directory (if needed).
 mkdir -p /usr/local/bin
