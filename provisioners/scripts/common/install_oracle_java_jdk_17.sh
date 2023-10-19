@@ -3,10 +3,10 @@
 
 # install java se 17 development kit. --------------------------------------------------------------
 jdk_home="jdk17"
-jdk_build="17.0.7"
+jdk_build="17.0.9"
 jdk_folder="jdk-${jdk_build}"
 jdk_binary="${jdk_folder}_linux-x64_bin.tar.gz"
-jdk_sha256="6b1e55ca6e8a6242d7bd1f9a073cc4453a4285a9f9fe28daaa545a2ff4ee28d8"
+jdk_sha256="ad45ac97b3bc65497376f98ee276f84f4ab55ef2f62ab7f82ac0013e5b17744a"
 
 # create java home parent folder.
 mkdir -p /usr/local/java
