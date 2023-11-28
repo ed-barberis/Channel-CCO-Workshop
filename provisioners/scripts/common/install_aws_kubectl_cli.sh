@@ -15,24 +15,24 @@
 #---------------------------------------------------------------------------------------------------
 
 # install kubectl cli. -----------------------------------------------------------------------------
-#kubectl_release="1.28.2"
-#kubectl_date="2023-10-17"
-#kubectl_sha256="717a48943abe5555093ab7f06232be36e83531406aef44a143473d1975002bc5"
-kubectl_release="1.27.6"
-kubectl_date="2023-10-17"
-kubectl_sha256="41ff242c818bfac0101b24b055ad7a2a5bf48003d195066eb184fb187be48654"
-#kubectl_release="1.26.9"
-#kubectl_date="2023-10-17"
-#kubectl_sha256="7c5d07f988f460297069403ce596435b7ff8392fad0589383f377ec8ae59639b"
-#kubectl_release="1.25.14"
-#kubectl_date="2023-10-17"
-#kubectl_sha256="9542fbf438a32cc618f77895cc585f4979cdb55f1a8a79d6f811e56c62a04922"
+kubectl_release="1.28.3"
+kubectl_date="2023-11-14"
+kubectl_sha256="3b9ffe2effbfc12a30b12739126f069fe8a7f13625e71ccb82c33ad1ea8f8092"
+#kubectl_release="1.27.7"
+#kubectl_date="2023-11-14"
+#kubectl_sha256="d2351de8ebcebb4a3ba1a3daf359910b93460a0b71db93f4f83ddfabcd0ed041"
+#kubectl_release="1.26.10"
+#kubectl_date="2023-11-14"
+#kubectl_sha256="b55a9aa731e79b824812555c0f8671e00e03b3e2a41403134b8c2f883506fdb6"
+#kubectl_release="1.25.15"
+#kubectl_date="2023-11-14"
+#kubectl_sha256="d08fe44203e0798ec34d7cd4721202bebafc9b3f3b5bca5c9a62f15e58423260"
 #kubectl_release="1.24.17"
-#kubectl_date="2023-10-17"
-#kubectl_sha256="709443ba7fa723aa171eeff1284fc923c5b6d586bcb7e0d35eeff796f89f27b6"
+#kubectl_date="2023-11-14"
+#kubectl_sha256="ef774c10dbfbff8a593c8761796794e5f7ef19f8fd4672c6321b0fa5722a76be"
 #kubectl_release="1.23.17"
-#kubectl_date="2023-10-17"
-#kubectl_sha256="303cb57dee80d1de2dd61bbb8d1d6dd04648a8e7f08bd68933fb01f456314979"
+#kubectl_date="2023-11-14"
+#kubectl_sha256="8ebc59c645d59b2b3f4d69485ef4abbd1f3b9461a7e5cf7222a5c85abc3f5aee"
 
 # create local bin directory (if needed).
 mkdir -p /usr/local/bin
@@ -56,7 +56,7 @@ export PATH
 
 # verify installation.
 case $kubectl_release in
-  1.28.2|1.29.0)
+  1.28.3|1.29.0)
     kubectl version --client
     ;;
   *)
