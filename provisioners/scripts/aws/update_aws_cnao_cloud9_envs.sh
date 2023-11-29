@@ -98,7 +98,9 @@ if [ "${aws_account_id}" == "395719258032" ]; then
   cnao_cloud9_user_share_array+=( "arn:aws:iam::395719258032:user/cloud9-lab-user-01" )
   cnao_cloud9_user_share_array+=( "arn:aws:iam::395719258032:user/ed.barberis" )
   cnao_cloud9_user_share_array+=( "arn:aws:iam::395719258032:user/james.schneider" )
-  cnao_cloud9_user_share_array+=( "arn:aws:iam::395719258032:user/wayne.brown" )
+  cnao_cloud9_user_share_array+=( "arn:aws:sts::395719258032:assumed-role/admin/ebarberi@cisco.com" )
+  cnao_cloud9_user_share_array+=( "arn:aws:sts::395719258032:assumed-role/admin/avkumar7@cisco.com" )
+  cnao_cloud9_user_share_array+=( "arn:aws:sts::395719258032:assumed-role/devops/wiwan@cisco.com" )
 # create user arns array for appd original aws account.
 elif [ "${aws_account_id}" == "975944588697" ]; then
   cnao_cloud9_user_share_array+=( "arn:aws:sts::975944588697:assumed-role/AWSReservedSSO_appd-aws-975944588697-dev_35531c6d12fd4c96/ed.barberis@appdynamics.com" )
