@@ -70,12 +70,12 @@ case $user_host_os in
     yum -y install glibc-static
     ;;
 
-  "Amazon Linux 2023"|"Fedora Linux 36 (Cloud Edition)"|"Fedora Linux 37 (Cloud Edition)"|"Fedora Linux 38 (Cloud Edition)")
+  "Amazon Linux 2023"|"Fedora Linux 36 (Cloud Edition)"|"Fedora Linux 37 (Cloud Edition)"|"Fedora Linux 38 (Cloud Edition)"|"Fedora Linux 39 (Cloud Edition)")
     dnf -y install glibc-static
     ;;
 
   # in centos 8 like environments, the 'glibc-static' library is found in the 'powertools' repo.
-  "AlmaLinux 8.8 (Sapphire Caracal)"|"CentOS Stream 8"|"Rocky Linux 8.8 (Green Obsidian)")
+  "AlmaLinux 8.9 (Midnight Oncilla)"|"CentOS Stream 8"|"Rocky Linux 8.9 (Green Obsidian)")
     dnf -y install dnf-plugins-core
     dnf -y install epel-release
     dnf config-manager --set-enabled powertools
@@ -83,7 +83,7 @@ case $user_host_os in
     ;;
 
   # in centos 9 like environments, the 'glibc-static' library is found in the 'crb' repo.
-  "AlmaLinux 9.2 (Turquoise Kodkod)"|"CentOS Stream 9"|"Rocky Linux 9.2 (Blue Onyx)")
+  "AlmaLinux 9.3 (Shamrock Pampas Cat)"|"CentOS Stream 9"|"Rocky Linux 9.3 (Blue Onyx)")
     dnf -y install dnf-plugins-core
     dnf -y install epel-release
     dnf config-manager --set-enabled crb
@@ -97,7 +97,7 @@ esac
 # install the cloud9 runtime environment in the user's home directory ('~/.c9').
 case $user_host_os in
   # for newer os environments that don't have 'python2', we need to run the new c9 v2.0.0 installer script.
-  "AlmaLinux 9.2 (Turquoise Kodkod)"|"Amazon Linux 2023"|"CentOS Stream 9"|"Fedora Linux 36 (Cloud Edition)"|"Fedora Linux 37 (Cloud Edition)"|"Fedora Linux 38 (Cloud Edition)"|"Rocky Linux 9.2 (Blue Onyx)"|"Ubuntu 20.04.6 LTS"|"Ubuntu 22.04.2 LTS"|"Ubuntu 22.10"|"Ubuntu 23.04")
+  "AlmaLinux 9.3 (Shamrock Pampas Cat)"|"Amazon Linux 2023"|"CentOS Stream 9"|"Fedora Linux 36 (Cloud Edition)"|"Fedora Linux 37 (Cloud Edition)"|"Fedora Linux 38 (Cloud Edition)"|"Fedora Linux 39 (Cloud Edition)"|"Rocky Linux 9.3 (Blue Onyx)"|"Ubuntu 20.04.6 LTS"|"Ubuntu 22.04.2 LTS"|"Ubuntu 22.10"|"Ubuntu 23.04")
     runuser -c "${devops_home}/provisioners/scripts/aws/c9-install-2.0.0.sh" - ${user_name}
     ;;
 
