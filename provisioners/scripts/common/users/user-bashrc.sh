@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2023/10/18 SMI
+# @(#).bashrc       1.0 2023/12/06 SMI
 # bash resource configuration for cnao lpad users.
 
 # source global definitions.
@@ -32,6 +32,10 @@ MAVEN_OPTS=-Dfile.encoding="UTF-8"
 export MAVEN_OPTS
 M2=$M2_HOME/bin
 export M2
+
+# set groovy home environment variables.
+GROOVY_HOME=/usr/local/apache/groovy
+export GROOVY_HOME
 
 # set gradle home path.
 GRADLE_HOME=/usr/local/gradle/gradle
@@ -96,7 +100,7 @@ PS1="${reset}${cyan}\h${blue}[${green}\u${blue}]${white}\$ "
 export PS1
 
 # add local applications to main PATH.
-PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$GOPATH/bin:$HOME/.local/bin:$PATH
+PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:${GROOVY_HOME}/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$GOPATH/bin:$HOME/.local/bin:$PATH
 export PATH
 
 # set options.
@@ -145,7 +149,7 @@ function psgrep {
 }
 
 function netstatgrep {
-  netstat -an | grep "Active\|Proto\|$@"
+  netstat -ant | grep "Active\|Proto\|$@"
 }
 
 function otel_demo_urls {
