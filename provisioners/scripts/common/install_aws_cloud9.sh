@@ -94,9 +94,9 @@ case $user_host_os in
     ;;
 esac
 
-# add 'python3-venv' environment for ubuntu 20.04 installations.
+# add 'python3-venv' environment for ubuntu 20.04 and 22.04 installations.
 case $user_host_os in
-  "Ubuntu 20.04.6 LTS")
+  "Ubuntu 20.04.6 LTS"|"Ubuntu 22.04.3 LTS")
     apt-get update
     apt-get -y install python3-venv
     ;;
