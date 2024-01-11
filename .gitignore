@@ -48,7 +48,7 @@ ansible.cfg
 /docs/**/*.psd
 /workshops/**/*.psd
 
-# ignore 'live' bash resource configuration file for appdynamics cnao lab devops users.
+# ignore 'live' bash resource configuration file for appdynamics cco lab devops users.
 /bin/set_devops_env.sh
 
 # macOS .DS_Store files.

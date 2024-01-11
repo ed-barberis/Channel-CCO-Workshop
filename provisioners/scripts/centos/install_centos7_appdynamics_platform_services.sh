@@ -48,8 +48,8 @@ appd_controller_root_password="${appd_controller_root_password:-welcome1}"
 appd_controller_mysql_password="${appd_controller_mysql_password:-welcome1}"
 set -x  # turn command display back ON.
 
-# [OPTIONAL] cnao lab devops home folder [w/ default].
-devops_home="${devops_home:-/opt/cnao-lab-devops}"
+# [OPTIONAL] cco lab devops home folder [w/ default].
+devops_home="${devops_home:-/opt/cco-lab-devops}"
 
 # define usage function. ---------------------------------------------------------------------------
 usage() {
@@ -93,8 +93,8 @@ Usage:
     [root]# export appd_controller_root_password="welcome1"             # [optional] controller root password (defaults to 'welcome1').
     [root]# export appd_controller_mysql_password="welcome1"            # [optional] controller mysql root password (defaults to 'welcome1').
 
-  [OPTIONAL] cnao lab devops home folder [w/ default].
-    [root]# export devops_home="/opt/cnao-lab-devops"                   # [optional] devops home (defaults to '/opt/cnao-lab-devops').
+  [OPTIONAL] cco lab devops home folder [w/ default].
+    [root]# export devops_home="/opt/cco-lab-devops"                    # [optional] devops home (defaults to '/opt/cco-lab-devops').
 
   --------
   Example:

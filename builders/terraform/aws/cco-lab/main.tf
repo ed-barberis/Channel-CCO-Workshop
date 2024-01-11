@@ -58,8 +58,8 @@ locals {
   ec2_instance_profile_name = "${local.lab_resource_prefix}-${local.unique_string}-EC2-Instance-Profile"
 
   # define resource tagging here to ensure standardized naming conventions.
-  # cnao lab tag names for aws resources.
-  cnao_resource_tags = {
+  # cco lab tag names for aws resources.
+  cco_resource_tags = {
     EnvironmentHome = var.resource_environment_home_tag
     Owner           = var.resource_owner_tag
     Event           = var.resource_event_tag
@@ -82,13 +82,13 @@ locals {
     CreatedBy             = data.aws_caller_identity.current.arn
     IntendedPublic        = "True"
     ContainsPII           = "False"
-    Service               = "CNAOLab"
+    Service               = "CCOLab"
     ApplicationName       = var.resource_project_tag
     CostCenter            = var.resource_cost_center_tag
   }
 
-  # if this environment is for appdynamics, merge in 'appd_resource_tags'; otherwise, use 'cnao_resource_tags'.
-  resource_tags = substr(var.resource_name_prefix, 0, 4) == "CNAO" ? merge(local.cnao_resource_tags, local.appd_resource_tags) : local.cnao_resource_tags
+  # if this environment is for appdynamics, merge in 'appd_resource_tags'; otherwise, use 'cco_resource_tags'.
+  resource_tags = substr(var.resource_name_prefix, 0, 4) == "CCO" ? merge(local.cco_resource_tags, local.appd_resource_tags) : local.cco_resource_tags
 }
 
 # Data Sources -------------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
-data "aws_ami" "cnao_lab_ami" {
+data "aws_ami" "cco_lab_ami" {
   most_recent = true
   owners      = ["self"]
 
@@ -190,7 +190,7 @@ module "vm" {
   version = ">= 5.6"
 
   name                 = local.vm_name
-  ami                  = data.aws_ami.cnao_lab_ami.id
+  ami                  = data.aws_ami.cco_lab_ami.id
   instance_type        = var.aws_ec2_instance_type
   iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.id
   key_name             = var.aws_ec2_ssh_pub_key_name
@@ -213,8 +213,8 @@ module "vm" {
     aws_region_name        = var.aws_region
     use_aws_ec2_num_suffix = "true"
     aws_eks_cluster_name   = local.cluster_name
-    cnao_k8s_apm_name      = lower(local.cluster_name)
-    cnao_lab_id            = lower(trimsuffix(local.cluster_name, "-EKS"))
+    cco_k8s_apm_name       = lower(local.cluster_name)
+    cco_lab_id             = lower(trimsuffix(local.cluster_name, "-EKS"))
     lab_number             = var.lab_number
   }))
 }
@@ -275,7 +275,7 @@ module "eks" {
   aws_auth_roles = [
     {
       rolearn  = aws_iam_role.ec2_access_role.arn
-      username = "cnaolabuser"
+      username = "ccolabuser"
       groups   = ["system:masters"]
     }
   ]
@@ -385,10 +385,10 @@ resource "null_resource" "ansible_trigger" {
   # execute the following 'local-exec' provisioners each time the trigger is invoked.
   # generate the ansible aws hosts inventory using 'cat' and Heredoc.
   provisioner "local-exec" {
-    working_dir = "../../../../provisioners/ansible/cnao-lab"
+    working_dir = "../../../../provisioners/ansible/cco-lab"
     command     = <<EOD
 cat <<EOF > aws_hosts.inventory
-[cnao_lab_vm]
+[cco_lab_vm]
 ${module.vm.public_dns}
 EOF
 EOD

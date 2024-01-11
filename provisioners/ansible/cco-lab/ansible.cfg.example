@@ -2,7 +2,7 @@
 remote_user = ec2-user
 host_key_checking = no
 inventory = aws_hosts.inventory
-private_key_file = ~/.ssh/Channel-CNAO-Workshop.pem
+private_key_file = ~/.ssh/Channel-CCO-Workshop.pem
 
 [privilege_escalation]
 become = no

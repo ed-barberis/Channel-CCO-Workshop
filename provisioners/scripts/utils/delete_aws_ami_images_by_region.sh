@@ -1,6 +1,6 @@
 #!/bin/bash
 #---------------------------------------------------------------------------------------------------
-# Delete the Channel CNAO Workshop project-specific AWS AMI's for the specified region.
+# Delete the Channel CCO Workshop project-specific AWS AMI's for the specified region.
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -9,8 +9,8 @@
 #---------------------------------------------------------------------------------------------------
 
 # set default values for input environment variables if not set. -----------------------------------
-appd_platform_name="${appd_platform_name-Channel CNAO Workshop}"
-appd_project_image_types="${appd_project_image_types-CNAO-LPAD-AL2 CNAO-LPAD-AL2023 CNAO-LPAD-CentOS7 CNAO-LPAD-Ubuntu-Focal CNAO-LPAD-Ubuntu-Jammy}"
+appd_platform_name="${appd_platform_name-Channel CCO Workshop}"
+appd_project_image_types="${appd_project_image_types-CCO-LPAD-AL2 CCO-LPAD-AL2023 CCO-LPAD-CentOS7 CCO-LPAD-Ubuntu-Focal CCO-LPAD-Ubuntu-Jammy}"
 aws_ami_region="${aws_ami_region-us-east-2}"
 aws_ami_keep_last="${aws_ami_keep_last-true}"
 

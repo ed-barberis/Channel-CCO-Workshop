@@ -2,7 +2,7 @@
 # install ansible on centos linux 7.x.
 
 # set default value for devops home environment variable if not set. -------------------------------
-devops_home="${devops_home:-/opt/cnao-lab-devops}"              # [optional] devops home (defaults to '/opt/cnao-lab-devops').
+devops_home="${devops_home:-/opt/cco-lab-devops}"               # [optional] devops home (defaults to '/opt/cco-lab-devops').
 
 # create scripts directory (if needed). ------------------------------------------------------------
 mkdir -p ${devops_home}/provisioners/scripts/centos

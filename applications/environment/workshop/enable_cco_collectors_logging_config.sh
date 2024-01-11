@@ -1,17 +1,16 @@
 #!/bin/bash -eu
 #---------------------------------------------------------------------------------------------------
-# Enable CNAO Collectors Logging configuration.
+# Enable CCO Collectors Logging configuration.
 #
-# The AppDynamics Kubernetes and App Service Monitoring with Cloud Native Application Observability
-# (CNAO) provides a solution to monitor applications and infrastructure with correlation using Helm
-# Charts.
+# The Cisco AppDynamics Kubernetes and App Service Monitoring with Cisco Cloud Observability (CCO)
+# provides a solution to monitor applications and infrastructure with correlation using Helm Charts.
 #
 # To simplify deployment of these Helm Charts with Logging enabled, this script will extract key
 # values from the # downloaded 'collectors-values.yaml' and add a Logging configuration for the
 # OTel Demo application.
 #
 # To execute this script, you will need the following:
-#   'collectors-values.yaml' file:     Download/upload to your local home directory from CNAO.
+#   'collectors-values.yaml' file:     Download/upload to your local home directory from CCO.
 #   yq:                                'yq' is a command-line YAML processor for linux 64-bit.
 #
 # For more details, please visit:
@@ -26,7 +25,7 @@
 # check if 'collectors-values.yaml' file exists.
 if [ ! -f "collectors-values.yaml" ]; then
   echo "ERROR: 'collectors-values.yaml' file NOT found."
-  echo "Please generate and download from your AppDynamics CNAO Tenant."
+  echo "Please generate and download from your Cisco Cloud Observabilty Tenant."
   echo "For more information, visit:"
   echo "  https://docs.appdynamics.com/fso/cloud-native-app-obs/en/kubernetes-and-app-service-monitoring"
   exit 1
@@ -54,7 +53,7 @@ echo "Begin processing Helm Chart files..."
 cp -p collectors-values.yaml collectors-values.yaml.${curdate}
 
 # extract helm chart values from 'collectors-values.yaml'. -----------------------------------------
-echo "Extracting CNAO configuration values..."
+echo "Extracting CCO configuration values..."
 client_id=$(yq '.appdynamics-otel-collector.clientId' collectors-values.yaml)
 client_secret=$(yq '.appdynamics-otel-collector.clientSecret' collectors-values.yaml)
 cluster_name=$(yq '.global.clusterName' collectors-values.yaml)
@@ -114,5 +113,5 @@ EOF
 echo ""
 
 # print completion message.
-echo "CNAO Collectors file: 'collectors-values-with-logging.yaml' created."
-echo "Enable CNAO Collectors Logging configuration operation complete."
+echo "CCO Collectors file: 'collectors-values-with-logging.yaml' created."
+echo "Enable CCO Collectors Logging configuration operation complete."

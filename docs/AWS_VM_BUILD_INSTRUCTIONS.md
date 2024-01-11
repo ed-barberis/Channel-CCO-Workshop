@@ -128,7 +128,7 @@ To prepare for the build, perform the following steps:
     variables for your environment.
 
     ```bash
-    cd ~/cnao-lab-devops/bin
+    cd ~/cco-lab-devops/bin
     cp -p set_devops_env.sh.template set_devops_env.sh
     vi set_devops_env.sh
     ```
@@ -175,7 +175,7 @@ __Packer Build Flow for AWS__
     This will take several minutes to run.
 
     ```bash
-    $ cd ~/cnao-lab-devops/builders/packer/aws
+    $ cd ~/cco-lab-devops/builders/packer/aws
     packer build fso-lpad-al2.json
     ```
 
@@ -187,7 +187,7 @@ __Packer Build Flow for AWS__
     AMI image is not removed. To delete ALL images, set the `aws_ami_keep_last` environment variable to `false`.
 
     ```bash
-    cd ~/cnao-lab-devops/provisioners/scripts/utils
+    cd ~/cco-lab-devops/provisioners/scripts/utils
     ./delete_aws_ami_images_by_region.sh
     ```
 

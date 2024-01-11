@@ -1,5 +1,5 @@
 # @(#).bashrc       1.0 2023/12/06 SMI
-# bash resource configuration for cnao lpad users.
+# bash resource configuration for cco lpad users.
 
 # source global definitions.
 if [ -f /etc/bashrc ]; then
@@ -54,31 +54,31 @@ GOPATH=$HOME/go
 export GOPATH
 
 # set devops home path.
-devops_home=/opt/cnao-lab-devops
+devops_home=/opt/cco-lab-devops
 export devops_home
 
 # set kubectl config path.
 KUBECONFIG=$HOME/.kube/config
 export KUBECONFIG
 
-# set cnao lab environment variables.
+# set cco lab environment variables.
 aws_region_name="us-east-2"
 export aws_region_name
 
-aws_eks_cluster_name="CNAO-Lab-01-abcde-EKS"
+aws_eks_cluster_name="CCO-Lab-01-abcde-EKS"
 export aws_eks_cluster_name
 
 eks_kubeconfig_filepath="$HOME/.kube/config"
 export eks_kubeconfig_filepath
 
-cnao_k8s_apm_name="cnao-lab-01-abcde-eks"
-export cnao_k8s_apm_name
+cco_k8s_apm_name="cco-lab-01-abcde-eks"
+export cco_k8s_apm_name
 
-cnao_lab_id="cnao-lab-01-abcde"
-export cnao_lab_id
+cco_lab_id="cco-lab-01-abcde"
+export cco_lab_id
 
-cnao_lab_number="01"
-export cnao_lab_number
+cco_lab_number="01"
+export cco_lab_number
 
 # define prompt code and colors.
 reset='\[\e]0;\w\a\]'
@@ -159,11 +159,11 @@ function otel_demo_urls {
   echo "------------------------------------------------------------------------------------------------------------------------"
   echo "  The following services will be available once the Load Balancer has completed its Health checks:"
   echo ""
-  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Webstore:          http://%s:%s/\n", $4, substr($5,0,index($5,":")-1)}'
-  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Grafana:           http://%s:%s/grafana/\n", $4, substr($5,0,index($5,":")-1)}'
-  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Feature Flags UI:  http://%s:%s/feature/\n", $4, substr($5,0,index($5,":")-1)}'
-  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Load Generator UI: http://%s:%s/loadgen/\n", $4, substr($5,0,index($5,":")-1)}'
-  kubectl get services -n $cnao_lab_id ${cnao_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Jaeger UI:         http://%s:%s/jaeger/ui/\n", $4, substr($5,0,index($5,":")-1)}'
+  kubectl get services -n $cco_lab_id ${cco_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Webstore:          http://%s:%s/\n", $4, substr($5,0,index($5,":")-1)}'
+  kubectl get services -n $cco_lab_id ${cco_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Grafana:           http://%s:%s/grafana/\n", $4, substr($5,0,index($5,":")-1)}'
+  kubectl get services -n $cco_lab_id ${cco_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Feature Flags UI:  http://%s:%s/feature/\n", $4, substr($5,0,index($5,":")-1)}'
+  kubectl get services -n $cco_lab_id ${cco_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Load Generator UI: http://%s:%s/loadgen/\n", $4, substr($5,0,index($5,":")-1)}'
+  kubectl get services -n $cco_lab_id ${cco_lab_id}-otel-demo-frontendproxy | awk '/frontendproxy/ {printf "    Jaeger UI:         http://%s:%s/jaeger/ui/\n", $4, substr($5,0,index($5,":")-1)}'
   echo "------------------------------------------------------------------------------------------------------------------------"
   echo ""
 }

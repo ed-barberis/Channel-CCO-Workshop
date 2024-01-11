@@ -1,12 +1,12 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Delete CNAO Lab User with associated Group and Policies.
+# Delete CCO Lab User with associated Group and Policies.
 #
 # An AWS Identity and Access Management (IAM) user is an entity that you create in AWS to represent
 # the person or application that uses it to interact with AWS. A user in AWS consists of a name and
 # credentials.
 #
-# To simplify workshop provisioning, all lab participants will make use of a single CNAO Lab User.
+# To simplify workshop provisioning, all lab participants will make use of a single CCO Lab User.
 # Each participant will login to the AWS Console in order to access their Cloud9 IDE.
 # 
 # For more details, please visit:
@@ -21,9 +21,9 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] aws create user install parameters [w/ defaults].
-aws_user_name="${aws_user_name:-cnao-lab-user}"
-aws_group_name="${aws_group_name:-cnao-lab-group}"
-local_devops_home="${local_devops_home:-${HOME}/Channel-CNAO-Workshop}"
+aws_user_name="${aws_user_name:-cco-lab-user}"
+aws_group_name="${aws_group_name:-cco-lab-group}"
+local_devops_home="${local_devops_home:-${HOME}/Channel-CCO-Workshop}"
 
 # define usage function. ---------------------------------------------------------------------------
 usage() {
@@ -34,9 +34,9 @@ Usage:
         User should have pre-configured AWS CLI.
 
   Description of Environment Variables:
-    [ubuntu]$ export aws_user_name="cnao-lab-user"                      # [optional] cnao lab user name.
-    [ubuntu]$ export aws_group_name="cnao-lab-group"                    # [optional] cnao lab group name.
-    [ubuntu]$ export local_devops_home="${HOME}/Channel-CNAO-Workshop"  # [optional] local devops home environment variable.
+    [ubuntu]$ export aws_user_name="cco-lab-user"                       # [optional] cco lab user name.
+    [ubuntu]$ export aws_group_name="cco-lab-group"                     # [optional] cco lab group name.
+    [ubuntu]$ export local_devops_home="${HOME}/Channel-CCO-Workshop"   # [optional] local devops home environment variable.
 
   Example:
     [ubuntu]$ $0
@@ -62,21 +62,21 @@ if [ -z "$aws_group" ]; then
   exit 1
 fi
 
-# remove user from cnao lab group and delete cnao lab user. ----------------------------------------
+# remove user from cco lab group and delete cco lab user. ------------------------------------------
 aws iam remove-user-from-group --group-name ${aws_group_name} --user-name ${aws_user_name}
 
-# delete cnao lab user.
+# delete cco lab user.
 aws iam delete-login-profile --user-name ${aws_user_name}
 aws iam delete-user --user-name ${aws_user_name}
 
-# detach group policies and delete cnao lab group. -------------------------------------------------
-# detach group policies from cnao lab group.
+# detach group policies and delete cco lab group. --------------------------------------------------
+# detach group policies from cco lab group.
 aws iam detach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess
 aws iam detach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
 aws iam detach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AWSCloud9EnvironmentMember
 
-# delete cnao lab group.
+# delete cco lab group.
 aws iam delete-group --group-name ${aws_group_name}
 
 # print completion message.
-echo "CNAO Lab User deletion complete."
+echo "CCO Lab User deletion complete."

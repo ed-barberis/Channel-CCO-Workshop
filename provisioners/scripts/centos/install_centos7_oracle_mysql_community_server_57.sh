@@ -25,8 +25,8 @@ set -x  # turn command display back ON.
 mysql_yum_release="${mysql_server_release:-80}"                         # [optional] yum repository version (defaults to '80').
 mysql_server_release="${mysql_server_release:-57}"                      # [optional] mysql server version (defaults to '57').
 
-# [OPTIONAL] cnao lab devops home folder [w/ default].
-devops_home="${devops_home:-/opt/cnao-lab-devops}"                      # [optional] devops home (defaults to '/opt/cnao-lab-devops').
+# [OPTIONAL] cco lab devops home folder [w/ default].
+devops_home="${devops_home:-/opt/cco-lab-devops}"                       # [optional] devops home (defaults to '/opt/cco-lab-devops').
 
 # create scripts directory (if needed). ------------------------------------------------------------
 mkdir -p ${devops_home}/provisioners/scripts/centos

@@ -27,8 +27,8 @@ set +x  # temporarily turn command display OFF.
 mariadb_server_root_password="${mariadb_server_root_password:-Password1234!}"   # [optional] root password (defaults to 'Password1234!').
 set -x  # turn command display back ON.
 
-# [OPTIONAL] cnao lab devops home folder [w/ default].
-devops_home="${devops_home:-/opt/cnao-lab-devops}"                              # [optional] devops home (defaults to '/opt/cnao-lab-devops').
+# [OPTIONAL] cco lab devops home folder [w/ default].
+devops_home="${devops_home:-/opt/cco-lab-devops}"                               # [optional] devops home (defaults to '/opt/cco-lab-devops').
 
 # create scripts directory (if needed). ------------------------------------------------------------
 mkdir -p ${devops_home}/provisioners/scripts/centos

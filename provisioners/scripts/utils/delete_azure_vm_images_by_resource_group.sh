@@ -9,7 +9,7 @@
 #---------------------------------------------------------------------------------------------------
 
 # set default values for input environment variables if not set. -----------------------------------
-appd_project_image_types="${appd_project_image_types-CNAO-LPAD-CentOS7}"
+appd_project_image_types="${appd_project_image_types-CCO-LPAD-CentOS7}"
 azurerm_resource_group_name="${azurerm_resource_group_name-Cloud-Kickstart-Workshop-Images}"
 azurerm_image_gallery_name="${azurerm_image_gallery_name-CloudKickstartWorkshopGallery }"
 azurerm_image_keep_last="${azurerm_image_keep_last-true}"

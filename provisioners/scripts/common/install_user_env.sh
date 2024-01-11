@@ -1,5 +1,5 @@
 #!/bin/bash -eux
-# create default command-line environment profile for cnao lab devops user.
+# create default command-line environment profile for cco lab devops user.
 
 # set default values for input environment variables if not set. -----------------------------------
 user_name="${user_name:-}"
@@ -10,7 +10,7 @@ user_prompt_color="${user_prompt_color:-green}"
 d_completion_release="${d_completion_release:-24.0.7}"
 
 # set default value for devops home environment variable if not set. -------------------------------
-devops_home="${devops_home:-/opt/cnao-lab-devops}"
+devops_home="${devops_home:-/opt/cco-lab-devops}"
 
 # define usage function. ---------------------------------------------------------------------------
 usage() {
@@ -28,7 +28,7 @@ Usage:
                                                                 #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
                                                                 #
     [root]# export d_completion_release="24.0.7"                # [optional] docker completion for bash release (defaults to '24.0.7').
-    [root]# export devops_home="/opt/cnao-lab-devops"           # [optional] devops home (defaults to '/opt/cnao-lab-devops').
+    [root]# export devops_home="/opt/cco-lab-devops"            # [optional] devops home (defaults to '/opt/cco-lab-devops').
     [root]# $0
 EOF
 }

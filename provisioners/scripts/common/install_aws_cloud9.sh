@@ -34,7 +34,7 @@
 user_name="${user_name:-}"
 
 # set default value for devops home environment variable if not set. -------------------------------
-devops_home="${devops_home:-/opt/cnao-lab-devops}"
+devops_home="${devops_home:-/opt/cco-lab-devops}"
 
 # define usage function. ---------------------------------------------------------------------------
 usage() {
@@ -44,7 +44,7 @@ Usage:
   Script should be run with 'root' privilege.
   Example:
     [root]# export user_name="ec2-user"                         # user name.
-    [root]# export devops_home="/opt/cnao-lab-devops"           # [optional] devops home (defaults to '/opt/cnao-lab-devops').
+    [root]# export devops_home="/opt/cco-lab-devops"            # [optional] devops home (defaults to '/opt/cco-lab-devops').
     [root]# $0
 EOF
 }

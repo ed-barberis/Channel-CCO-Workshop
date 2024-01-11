@@ -1,12 +1,12 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install CNAO Lab tools on Ubuntu linux 64-bit.
+# Install CCO Lab tools on CentOS 7.9 linux 64-bit.
 #
-# To configure the CNAO Lab workshop environments, the first step is to set-up your development
+# To configure the CCO Lab workshop environments, the first step is to set-up your development
 # environment by installing the needed software. This script simplifies that process by automating
 # the installation of all needed packages.
 #
-# For Ubuntu, these software utilities include the following:
+# For CentOS, these software utilities include the following:
 #   Git:        Git is a distributed version control system.
 #   Packer:     Packer is a machine and container image tool by HashiCorp.
 #   Terraform:  Terraform is an Infrastructure as Code (IaC) tool by HashiCorp.
@@ -30,34 +30,33 @@ user_group="$(groups | awk '{print $1}')"                   # current user group
 export user_group
 user_home="$(eval echo "~${user_name}")"                    # current user home folder.
 export user_home
-devops_home="${user_home}/cnao-lab-devops"                  # cnao lab devops home folder.
+devops_home="${user_home}/cco-lab-devops"                   # cco lab devops home folder.
 export devops_home
 
 # validate environment variables. ------------------------------------------------------------------
-if [ "$user_name" = "root" ]; then
+if [ "$user_name" == "root" ]; then
   echo "Error: 'user_name' should NOT be 'root'."
   exit 1
 fi
 
 # install basic utilities needed for the install scripts. ------------------------------------------
-# update apt repository package indexes for ubuntu.
-sudo apt-get update
-sudo apt-get -y upgrade
+# update yum packages for centos.
+sudo yum -y update
 
 # install core linux utilities.
-sudo apt-get -y install curl git tree wget unzip man
+sudo yum -y install curl git tree wget unzip man
 
-# download the cnao lab devops project from github.com. --------------------------------------------
+# download the cco lab devops project from github.com. ---------------------------------------------
 cd ${user_home}
 rm -Rf ${devops_home}
-git clone https://github.com/ed-barberis/Channel-CNAO-Workshop.git ${devops_home}
+git clone https://github.com/ed-barberis/Channel-CCO-Workshop.git ${devops_home}
 cd ${devops_home}
 git fetch origin
 
 # download and install the custom utilities. -------------------------------------------------------
 # download, build, and install git from source.
-cd ${devops_home}/provisioners/scripts/ubuntu
-sudo -E ./install_ubuntu_git.sh
+cd ${devops_home}/provisioners/scripts/centos
+sudo -E ./install_centos7_git.sh
 
 # download and install packer by hashicorp.
 cd ${devops_home}/provisioners/scripts/common
@@ -76,8 +75,8 @@ cd ${devops_home}/provisioners/scripts/common
 sudo -E ./install_aws_cli_2.sh
 
 # download, build, and install vim 9 text editor from source.
-cd ${devops_home}/provisioners/scripts/ubuntu
-sudo ./install_ubuntu_vim_9.sh
+cd ${devops_home}/provisioners/scripts/centos
+sudo ./install_centos7_vim_9.sh
 
 # create default command-line environment profile for the 'root' user.
 cd ${devops_home}/provisioners/scripts/common
@@ -129,4 +128,4 @@ unset user_home
 unset devops_home
 
 # print completion message.
-echo "CNAO Lab Tools installation complete."
+echo "CCO Lab Tools installation complete."

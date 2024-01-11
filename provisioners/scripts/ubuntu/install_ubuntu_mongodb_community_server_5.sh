@@ -26,8 +26,8 @@ mongodb_server_admin_password="${mongodb_server_admin_password:-welcome1}"  # [o
 set -x  # turn command display back ON.
 mongodb_enable_access_control="${mongodb_enable_access_control:-false}"     # [optional] enable access control for mongodb (defaults to 'false').
 
-# [OPTIONAL] cnao lab devops home folder [w/ default].
-devops_home="${devops_home:-/opt/cnao-lab-devops}"                          # [optional] devops home (defaults to '/opt/cnao-lab-devops').
+# [OPTIONAL] cco lab devops home folder [w/ default].
+devops_home="${devops_home:-/opt/cco-lab-devops}"                           # [optional] devops home (defaults to '/opt/cco-lab-devops').
 
 # validate ubuntu release version. -----------------------------------------------------------------
 # check for supported ubuntu release.

@@ -1,5 +1,5 @@
 # @(#).bashrc       1.0 2023/07/12 SMI
-# bash resource configuration for cnao lpad administrators.
+# bash resource configuration for cco lpad administrators.
 
 # user 'root' specific aliases and functions.
 alias rm='rm -i'
@@ -38,7 +38,7 @@ GIT_FLOW_HOME=/usr/local/git/gitflow
 export GIT_FLOW_HOME
 
 # set devops home path.
-devops_home=/opt/cnao-lab-devops
+devops_home=/opt/cco-lab-devops
 export devops_home
 
 # define prompt code and colors.

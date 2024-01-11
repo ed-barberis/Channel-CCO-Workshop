@@ -1,23 +1,23 @@
 #!/bin/sh -eux
-# appdynamics aws cnao lab cloud-init script to initialize aws ec2 instance launched from ami.
+# appdynamics aws cco lab cloud-init script to initialize aws ec2 instance launched from ami.
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] aws user and host name config parameters [w/ defaults].
 user_name="${user_name:-ec2-user}"
-aws_ec2_hostname="${aws_ec2_hostname:-cnao-lab-vm}"
+aws_ec2_hostname="${aws_ec2_hostname:-cco-lab-vm}"
 aws_ec2_domain="${aws_ec2_domain:-localdomain}"
 aws_region_name="${aws_region_name:-us-east-2}"
 use_aws_ec2_num_suffix="${use_aws_ec2_num_suffix:-true}"
-aws_eks_cluster_name="${aws_eks_cluster_name:-CNAO-Lab-01-abcde-EKS}"
-cnao_k8s_apm_name="${cnao_k8s_apm_name:-cnao-lab-01-abcde-eks}"
-cnao_lab_id="${cnao_lab_id:-cnao-lab-01-abcde}"
+aws_eks_cluster_name="${aws_eks_cluster_name:-CCO-Lab-01-abcde-EKS}"
+cco_k8s_apm_name="${cco_k8s_apm_name:-cco-lab-01-abcde-eks}"
+cco_lab_id="${cco_lab_id:-cco-lab-01-abcde}"
 lab_number="${lab_number:-1}"
 
 # configure public keys for specified user. --------------------------------------------------------
 user_home=$(eval echo "~${user_name}")
 user_authorized_keys_file="${user_home}/.ssh/authorized_keys"
-user_key_name="Channel-CNAO-Workshop"
-user_public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkVnb7a69d+MSRG08WdqfvWXEpnT544XzohdZ0sIs5fRLU+pAh48F+BieIqxvCUKIUDXQFP04iQmoo5MKiLH42YVfDmsoidLDejiDS0O5KTn8DS6jA2akeT19xpYweKmRcw4kz+DeBe9dmYmggGQYZx48bSwBrwHcjvJciYTbLyBxmTx/kUIfn4Ub81cfoKq/m5qh/LnyZsXo+ZWj6kGDWsqSpX3I0jysaEsvQDRoRUUe0gSPIe7Y3IfTLsCj0PxzFMDqASeHMMGGoBzMhdWXexiDCUIcToGRKTC6FVfDEZs1kTYKJe7hp0CJtZHMdM7yAhb1JSAURT6ZcOwopxIH7 Channel-CNAO-Workshop"
+user_key_name="Channel-CCO-Workshop"
+user_public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDFasc821rZcs1gXEdjwtOLBgV6BUwkGRKXJHIMXbld6Gcy0yo2iHQm5eimO7GYzkHsB1XL4x0uxqXtrSQm2QY+taXWfjH5MsAY2pnwb3jPYxeBWclLyLnX5IAXnDwC5PngnLMKxRHJL3jpbmYov7ViKtpiNnS3ExMSxbuMITf2bfza2Ws9VKNBY6n3Tyk96oICPgTIcN1V+fZrMBfSTGpQmcsrMK/poOFKfS61wq9f20pD93/v8hdz6VPP/WwVQKdZBdGxIy7eY+WJl7qv7bDlHgQi/+g/Tt+RUtGwxEoIvjp0B/VQK11emTqv2Jlq+XH/VQC8w0kXEIugro2ukYO9 Channel-CCO-Workshop"
 
 # 'grep' to see if the user's public key is already present, if not, append to the file.
 grep -qF "${user_key_name}" ${user_authorized_keys_file} || echo "${user_public_key}" >> ${user_authorized_keys_file}
@@ -83,13 +83,13 @@ chmod 600 ${user_authorized_keys_file}
 # delete public key inserted by packer during the ami build.
 sed -i -e "/packer/d" ${user_authorized_keys_file}
 
-# configure cnao lab environment variables for user. -----------------------------------------------
+# configure cco lab environment variables for user. ------------------------------------------------
 # set current date for temporary filename.
 curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
-# set cnao lab environment configuration variables.
+# set cco lab environment configuration variables.
 user_bash_config_file="${user_home}/.bashrc"
-cnao_lab_number="$(printf '%02d' ${lab_number})"
+cco_lab_number="$(printf '%02d' ${lab_number})"
 
 # save a copy of the current file.
 if [ -f "${user_bash_config_file}.orig" ]; then
@@ -101,10 +101,10 @@ fi
 # use the stream editor to substitute the new values.
 sed -i -e "/^aws_region_name/s/^.*$/aws_region_name=\"${aws_region_name}\"/" ${user_bash_config_file}
 sed -i -e "/^aws_eks_cluster_name/s/^.*$/aws_eks_cluster_name=\"${aws_eks_cluster_name}\"/" ${user_bash_config_file}
-sed -i -e "/^cnao_k8s_apm_name/s/^.*$/cnao_k8s_apm_name=\"${cnao_k8s_apm_name}\"/" ${user_bash_config_file}
-sed -i -e "/^cnao_lab_id/s/^.*$/cnao_lab_id=\"${cnao_lab_id}\"/" ${user_bash_config_file}
+sed -i -e "/^cco_k8s_apm_name/s/^.*$/cco_k8s_apm_name=\"${cco_k8s_apm_name}\"/" ${user_bash_config_file}
+sed -i -e "/^cco_lab_id/s/^.*$/cco_lab_id=\"${cco_lab_id}\"/" ${user_bash_config_file}
 sed -i -e "/^eks_kubeconfig_filepath/s/^.*$/eks_kubeconfig_filepath=\"\$HOME\/.kube\/config\"/" ${user_bash_config_file}
-sed -i -e "/^cnao_lab_number/s/^.*$/cnao_lab_number=\"${cnao_lab_number}\"/" ${user_bash_config_file}
+sed -i -e "/^cco_lab_number/s/^.*$/cco_lab_number=\"${cco_lab_number}\"/" ${user_bash_config_file}
 
 # configure the hostname of the aws ec2 instance. --------------------------------------------------
 # export environment variables.

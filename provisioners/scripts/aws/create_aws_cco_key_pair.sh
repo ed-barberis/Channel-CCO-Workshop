@@ -1,6 +1,6 @@
 #!/bin/sh -eu
 #---------------------------------------------------------------------------------------------------
-# Create CNAO Lab key pair and import to AWS.
+# Create CCO Lab key pair and import to AWS.
 #
 # A key pair, consisting of a public key and a private key, is a set of security credentials that
 # you use to prove your identity when connecting to an Amazon EC2 instance. Amazon EC2 stores the
@@ -19,7 +19,7 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] aws create key pair parameters [w/ defaults].
-cnao_key_pair_name="${cnao_key_pair_name:-Channel-CNAO-Workshop}"
+cco_key_pair_name="${cco_key_pair_name:-Channel-CCO-Workshop}"
 aws_region_name="${aws_region_name:-us-east-2}"
 
 # define usage function. ---------------------------------------------------------------------------
@@ -31,7 +31,7 @@ Usage:
         User should have pre-configured AWS CLI.
 
   Description of Environment Variables:
-    [ubuntu]$ export cnao_key_pair_name="Channel-CNAO-Workshop" # [optional] channel cnao workshop key pair name.
+    [ubuntu]$ export cco_key_pair_name="Channel-CCO-Workshop"   # [optional] channel cco workshop key pair name.
     [ubuntu]$ export aws_region_name="us-east-2"                # [optional] aws region name.
 
   Example:
@@ -40,42 +40,42 @@ EOF
 }
 
 # validate environment variables. ------------------------------------------------------------------
-# check if cnao lab ssh key pair already exists.
-aws_key_pair=$(aws ec2 --region ${aws_region_name} describe-key-pairs --key-name "${cnao_key_pair_name}" | jq -r --arg AWS_KEY_PAIR "${cnao_key_pair_name}" '.KeyPairs[] | select(.KeyName | contains($AWS_KEY_PAIR)) | .KeyName')
+# check if cco lab ssh key pair already exists.
+aws_key_pair=$(aws ec2 --region ${aws_region_name} describe-key-pairs --key-name "${cco_key_pair_name}" | jq -r --arg AWS_KEY_PAIR "${cco_key_pair_name}" '.KeyPairs[] | select(.KeyName | contains($AWS_KEY_PAIR)) | .KeyName')
 
 if [ ! -z "$aws_key_pair" ]; then
-  echo "Error: cnao_key_pair_name: '${cnao_key_pair_name}' already exists."
+  echo "Error: cco_key_pair_name: '${cco_key_pair_name}' already exists."
   usage
   exit 1
 fi
 
-# create cnao lab ssh key pair. --------------------------------------------------------------------
-echo "Creating CNAO Lab key pair..."
+# create cco lab ssh key pair. ---------------------------------------------------------------------
+echo "Creating CCO Lab key pair..."
 
 # generate key pair in pem format.
 # we prefer 'ssh-keygen' because you can include a comment with the '-C' option.
-echo "ssh-keygen -b 2048 -t rsa -m PEM -C \"${cnao_key_pair_name}\" -f $HOME/.ssh/${cnao_key_pair_name}"
-ssh-keygen -b 2048 -t rsa -m PEM -C "${cnao_key_pair_name}" -f $HOME/.ssh/${cnao_key_pair_name}
+echo "ssh-keygen -b 2048 -t rsa -m PEM -C \"${cco_key_pair_name}\" -f $HOME/.ssh/${cco_key_pair_name}"
+ssh-keygen -b 2048 -t rsa -m PEM -C "${cco_key_pair_name}" -f $HOME/.ssh/${cco_key_pair_name}
 
-echo "mv $HOME/.ssh/${cnao_key_pair_name} $HOME/.ssh/${cnao_key_pair_name}.pem"
-mv $HOME/.ssh/${cnao_key_pair_name} $HOME/.ssh/${cnao_key_pair_name}.pem
+echo "mv $HOME/.ssh/${cco_key_pair_name} $HOME/.ssh/${cco_key_pair_name}.pem"
+mv $HOME/.ssh/${cco_key_pair_name} $HOME/.ssh/${cco_key_pair_name}.pem
 echo ""
 
 # you can also use the aws cli if you don't have 'ssh-keygen' installed.
 # the downside is that you don't get a local copy of the public key.
-#echo "aws ec2 --region ${aws_region_name} create-key-pair --key-name \"${cnao_key_pair_name}\" --query 'KeyMaterial' --output text > $HOME/.ssh/${cnao_key_pair_name}.pem"
-#aws ec2 --region ${aws_region_name} create-key-pair --key-name "${cnao_key_pair_name}" --query 'KeyMaterial' --output text > $HOME/.ssh/${cnao_key_pair_name}.pem
+#echo "aws ec2 --region ${aws_region_name} create-key-pair --key-name \"${cco_key_pair_name}\" --query 'KeyMaterial' --output text > $HOME/.ssh/${cco_key_pair_name}.pem"
+#aws ec2 --region ${aws_region_name} create-key-pair --key-name "${cco_key_pair_name}" --query 'KeyMaterial' --output text > $HOME/.ssh/${cco_key_pair_name}.pem
 #echo ""
 
-# import cnao lab key key pair to aws. -------------------------------------------------------------
-echo "aws ec2 --region ${aws_region_name} import-key-pair --key-name \"${cnao_key_pair_name}\" --public-key-material fileb://$HOME/.ssh/${cnao_key_pair_name}.pub"
-aws ec2 --region ${aws_region_name} import-key-pair --key-name "${cnao_key_pair_name}" --public-key-material fileb://$HOME/.ssh/${cnao_key_pair_name}.pub
+# import cco lab key key pair to aws. --------------------------------------------------------------
+echo "aws ec2 --region ${aws_region_name} import-key-pair --key-name \"${cco_key_pair_name}\" --public-key-material fileb://$HOME/.ssh/${cco_key_pair_name}.pub"
+aws ec2 --region ${aws_region_name} import-key-pair --key-name "${cco_key_pair_name}" --public-key-material fileb://$HOME/.ssh/${cco_key_pair_name}.pub
 echo ""
 
 # verify key pair.
-echo "aws ec2 --region ${aws_region_name} describe-key-pairs --key-name \"${cnao_key_pair_name}\" | jq '.'"
-aws ec2 --region ${aws_region_name} describe-key-pairs --key-name "${cnao_key_pair_name}" | jq '.'
+echo "aws ec2 --region ${aws_region_name} describe-key-pairs --key-name \"${cco_key_pair_name}\" | jq '.'"
+aws ec2 --region ${aws_region_name} describe-key-pairs --key-name "${cco_key_pair_name}" | jq '.'
 echo ""
 
 # print completion message.
-echo "CNAO Lab key pair creation complete."
+echo "CCO Lab key pair creation complete."

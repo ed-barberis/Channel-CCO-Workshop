@@ -34,7 +34,7 @@
         "Name": "{{user `aws_ami_name`}}",
         "Owner": "{{user `aws_ami_owner`}}",
         "Project": "{{user `app_name`}}",
-        "Project_Image_Type": "CNAO-LPAD-Ubuntu-Jammy",
+        "Project_Image_Type": "CCO-LPAD-Ubuntu-Jammy",
         "VM_Username": "{{user `aws_ec2_username`}}",
         "Base_AMI_Name": "{{.SourceAMIName}}",
         "ApplicationName": "{{user `app_name`}}",
@@ -48,7 +48,7 @@
         "DeploymentEnvironment": "NonProd",
         "Environment": "NonProd",
         "EnvironmentHome": "Cisco One Lab",
-        "Event": "CNAO Lab Demo",
+        "Event": "CCO Lab Demo",
         "Exception": "NA",
         "IntendedPublic": "True",
         "JIRACreation": "NA",
@@ -75,8 +75,8 @@
       "type": "file"
     },
     {
-      "destination": "/home/{{user `aws_ec2_username`}}/enable_cnao_collectors_logging_config.sh",
-      "source": "{{template_dir}}/../../../applications/environment/workshop/enable_cnao_collectors_logging_config.sh",
+      "destination": "/home/{{user `aws_ec2_username`}}/enable_cco_collectors_logging_config.sh",
+      "source": "{{template_dir}}/../../../applications/environment/workshop/enable_cco_collectors_logging_config.sh",
       "type": "file"
     },
     {
@@ -177,20 +177,20 @@
     }
   ],
   "variables": {
-    "app_name": "Channel CNAO Workshop",
-    "app_service_name": "CNAOLab",
+    "app_name": "Channel CCO Workshop",
+    "app_service_name": "CCOLab",
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "aws_session_token": "{{env `AWS_SESSION_TOKEN`}}",
-    "aws_ami_name": "CNAO-LPAD-Ubuntu2204-AMI",
-    "aws_ami_description": "AWS EC2 'launchpad' with pre-configured tooling for CNAO Lab on Ubuntu 22.04. Log-in with user 'ubuntu' using an SSH key-pair. AMI generated using the Channel CNAO Workshop Project.",
+    "aws_ami_name": "CCO-LPAD-Ubuntu2204-AMI",
+    "aws_ami_description": "AWS EC2 'launchpad' with pre-configured tooling for CCO Lab on Ubuntu 22.04. Log-in with user 'ubuntu' using an SSH key-pair. AMI generated using the Channel CCO Workshop Project.",
     "aws_ami_owner": "{{env `aws_ami_owner`}}",
     "aws_ami_region": "{{env `aws_ami_region`}}",
     "aws_cli_user_config": "{{env `aws_cli_user_config`}}",
     "aws_cli_default_region_name": "{{env `aws_cli_default_region_name`}}",
     "aws_cli_default_output_format": "{{env `aws_cli_default_output_format`}}",
     "aws_ec2_boot_disk_size": "48",
-    "aws_ec2_hostname": "cnao-lab",
+    "aws_ec2_hostname": "cco-lab",
     "aws_ec2_domain": "localdomain",
     "aws_ec2_instance_type": "t3.large",
     "aws_ec2_username": "ubuntu",
@@ -202,7 +202,7 @@
     "docker_completion_release": "24.0.7",
     "nodejs_release": "--lts",
     "npm_release": "latest",
-    "devops_home": "/opt/cnao-lab-devops",
+    "devops_home": "/opt/cco-lab-devops",
     "org_cost_center": "{{env `org_cost_center`}}"
   }
 }

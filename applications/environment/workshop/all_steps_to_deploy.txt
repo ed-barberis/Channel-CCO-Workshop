@@ -14,7 +14,7 @@ echo $iks_kubeconfig_filepath
 
 ### 3. Deploy the TeaStore application to both Kubernetes clusters
 
-cd /opt/cnao-lab-devops/provisioners/scripts/common
+cd /opt/cco-lab-devops/provisioners/scripts/common
 
 ./deploy_teastore_application_to_hybrid_kubernetes.sh
 

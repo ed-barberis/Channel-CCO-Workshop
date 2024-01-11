@@ -3,7 +3,7 @@
 #
 # Utility script to create assests in the AppDynamics Controller and populate controller connection details in various files.
 #
-# export appd_workshop_user=cnao-lab-55
+# export appd_workshop_user=cco-lab-55
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -14,9 +14,9 @@
 workshop_group_prefix=$(echo ${aws_eks_cluster_name} | awk -F '-' '{print tolower($1)}')
 
 # [MANDATORY] workshop user identity.
-appd_workshop_user=${workshop_group_prefix}"-teastore-cnao-lab-"${cnao_lab_number}"-"
+appd_workshop_user=${workshop_group_prefix}"-teastore-cco-lab-"${cco_lab_number}"-"
 
-#appd_workshop_user="cnao-lab-"${cnao_lab_number}"-"
+#appd_workshop_user="cco-lab-"${cco_lab_number}"-"
 
 
 echo ""

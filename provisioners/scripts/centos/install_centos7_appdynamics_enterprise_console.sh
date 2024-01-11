@@ -38,8 +38,8 @@ appd_platform_server_host="${appd_platform_server_host:-$local_hostname}"
 appd_platform_server_port="${appd_platform_server_port:-9191}"
 appd_platform_use_https="${appd_platform_use_https:-false}"
 
-# [OPTIONAL] cnao lab devops home folder [w/ default].
-devops_home="${devops_home:-/opt/cnao-lab-devops}"
+# [OPTIONAL] cco lab devops home folder [w/ default].
+devops_home="${devops_home:-/opt/cco-lab-devops}"
 
 # define usage function. ---------------------------------------------------------------------------
 usage() {
@@ -70,8 +70,8 @@ Usage:
     [root]# export appd_platform_server_port="9191"                     # [optional] platform server port (defaults to '9191').
     [root]# export appd_platform_use_https="false"                      # [optional] platform use https [boolean] (defaults to 'false').
 
-  [OPTIONAL] cnao lab devops home folder [w/ default].
-    [root]# export devops_home="/opt/cnao-lab-devops"                   # [optional] devops home (defaults to '/opt/cnao-lab-devops').
+  [OPTIONAL] cco lab devops home folder [w/ default].
+    [root]# export devops_home="/opt/cco-lab-devops"                    # [optional] devops home (defaults to '/opt/cco-lab-devops').
 
   --------
   Example:

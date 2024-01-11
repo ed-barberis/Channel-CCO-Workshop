@@ -17,10 +17,10 @@ if [ -z "$user_name" ]; then
 fi
 
 # create aws eks cluster. --------------------------------------------------------------------------
-# get cnao lab devops project.
+# get cco lab devops project.
 cd /home/${user_name}
 git clone https://github.com/APO-SRE/fso-lab-devops.git
-cd cnao-lab-devops
+cd cco-lab-devops
 git fetch origin
 #git checkout -b cleur20-lab origin/cleur20-lab
 

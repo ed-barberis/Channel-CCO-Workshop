@@ -44,7 +44,7 @@ variable "aws_cloud9_ssh_ingress_cidr_blocks" {
 variable "aws_ec2_vm_hostname_prefix" {
   description = "AWS EC2 VM hostname prefix."
   type        = string
-  default     = "cnao-lab"
+  default     = "cco-lab"
 }
 
 variable "aws_ec2_domain" {
@@ -62,13 +62,13 @@ variable "aws_ec2_user_name" {
 variable "aws_ec2_ssh_pub_key_name" {
   description = "AWS EC2 SSH public key for Lab VMs."
   type        = string
-  default     = "Channel-CNAO-Workshop"
+  default     = "Channel-CCO-Workshop"
 }
 
 variable "aws_ec2_source_ami_filter" {
   description = "AWS EC2 source AMI disk image filter."
   type        = string
-  default     = "CNAO-LPAD-AL2-AMI-*"
+  default     = "CCO-LPAD-AL2-AMI-*"
 }
 
 variable "aws_ec2_instance_type" {
@@ -145,19 +145,19 @@ variable "aws_eks_kubernetes_version" {
 variable "lab_ssh_pub_key_name" {
   description = "Name of SSH public key for EKS worker nodes."
   type        = string
-  default     = "Channel-CNAO-Workshop"
+  default     = "Channel-CCO-Workshop"
 }
 
 variable "resource_name_prefix" {
   description = "Resource name prefix."
   type        = string
-  default     = "CNAO-Lab"
+  default     = "CCO-Lab"
 }
 
 variable "resource_environment_home_tag" {
   description = "Resource environment home tag."
   type        = string
-  default     = "Channel CNAO Lab"
+  default     = "Channel CCO Lab"
 }
 
 variable "resource_owner_tag" {
@@ -169,13 +169,13 @@ variable "resource_owner_tag" {
 variable "resource_event_tag" {
   description = "Resource event tag."
   type        = string
-  default     = "CNAO Lab Demo"
+  default     = "CCO Lab Demo"
 }
 
 variable "resource_project_tag" {
   description = "Resource project tag."
   type        = string
-  default     = "Channel CNAO Workshop"
+  default     = "Channel CCO Workshop"
 }
 
 variable "resource_owner_email_tag" {

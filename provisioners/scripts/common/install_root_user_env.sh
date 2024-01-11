@@ -1,5 +1,5 @@
 #!/bin/bash -eux
-# create default command-line environment profile for cnao lab devops 'root' user.
+# create default command-line environment profile for cco lab devops 'root' user.
 
 # set default values for input environment variables if not set. -----------------------------------
 user_name="root"                                                # user name for 'root' user.
@@ -10,7 +10,7 @@ user_prompt_color="red"                                         # user prompt co
                                                                 #     'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
 
 # set default value for devops home environment variable if not set. -------------------------------
-devops_home="${devops_home:-/opt/cnao-lab-devops}"              # [optional] devops home (defaults to '/opt/cnao-lab-devops').
+devops_home="${devops_home:-/opt/cco-lab-devops}"               # [optional] devops home (defaults to '/opt/cco-lab-devops').
 
 # create default environment profile for the user. -------------------------------------------------
 root_bashprofile="${devops_home}/provisioners/scripts/common/users/user-root-bash_profile.sh"

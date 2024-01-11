@@ -18,5 +18,5 @@ fi
 export appd_aws_eks_user_name
 export appd_aws_eks_region
 
-cd cnao-lab-devops/applications/aws/AD-Capital-Kube
+cd cco-lab-devops/applications/aws/AD-Capital-Kube
 ./delete_eks_cluster.sh

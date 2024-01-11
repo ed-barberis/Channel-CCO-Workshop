@@ -1,22 +1,22 @@
 #!/bin/sh
-# bash resource configuration template for channel cnao workshop users.
+# bash resource configuration template for channel cco workshop users.
 # rename and remove the '.template'.
 
 # --------------------------------------------------------------------------------------------------
-# set cnao labs devops home.
+# set cco labs devops home.
 # --------------------------------------------------------------------------------------------------
-# [optional] devops home (defaults to '/opt/cnao-lab-devops').
-devops_home="/opt/cnao-lab-devops"
+# [optional] devops home (defaults to '/opt/cco-lab-devops').
+devops_home="/opt/cco-lab-devops"
 export devops_home
 
 # [optional] aws create user install parameters [w/ defaults].
-#aws_user_name="cnao-lab-user"
+#aws_user_name="cco-lab-user"
 #export aws_user_name
-#aws_user_password="<your_cnao_user_password_here>"
+#aws_user_password="<your_cco_user_password_here>"
 #export aws_user_password
-#aws_group_name="cnao-lab-group"
+#aws_group_name="cco-lab-group"
 #export aws_group_name
-local_devops_home="$HOME/projects/Channel-CNAO-Workshop"
+local_devops_home="$HOME/projects/Channel-CCO-Workshop"
 export local_devops_home
 
 # --------------------------------------------------------------------------------------------------

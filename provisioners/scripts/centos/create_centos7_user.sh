@@ -14,8 +14,8 @@ user_install_env="${user_install_env:-false}"
 user_docker_profile="${user_docker_profile:-false}"
 user_prompt_color="${user_prompt_color:-green}"
 
-# set default value for cnao lab devops home environment variable if not set. ----------------------
-devops_home="${devops_home:-/opt/cnao-lab-devops}"
+# set default value for cco lab devops home environment variable if not set. -----------------------
+devops_home="${devops_home:-/opt/cco-lab-devops}"
 
 # define usage function. ---------------------------------------------------------------------------
 usage() {
@@ -42,7 +42,7 @@ Usage:
                                                                 #            valid colors:
                                                                 #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
 
-    [root]# export devops_home="/opt/cnao-lab-devops"           # [optional] devops home (defaults to '/opt/cnao-lab-devops').
+    [root]# export devops_home="/opt/cco-lab-devops"            # [optional] devops home (defaults to '/opt/cco-lab-devops').
     [root]# $0
 EOF
 }

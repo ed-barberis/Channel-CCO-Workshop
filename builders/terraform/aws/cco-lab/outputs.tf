@@ -45,7 +45,7 @@ output "public_dns" {
 }
 
 output "aws_vpc_id" {
-  description = "The ID of the CNAO Lab VPC."
+  description = "The ID of the CCO Lab VPC."
   value       = module.vpc.vpc_id
 }
 
