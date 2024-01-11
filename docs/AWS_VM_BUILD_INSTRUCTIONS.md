@@ -208,7 +208,7 @@ __NOTE:__ The following steps are repeated for each major element of the worksho
 
 1.	Deploy the AWS Lab infrastructure.
 
-	a.	Create the Terraform `terraform.tfvars` file. AppDynamics SEs can download an example (`.tfvars`) file
+	a.	Create the Terraform `terraform.tfvars` file. Cisco SEs can download an example (`.tfvars`) file
     [here](https://drive.google.com/file/d/1uhgAEXtGSB5JKfBEvDp_iq8yIyoEYMOE/view?usp=sharing).
 
     __NOTE:__ The `terraform.tfvars` file is automatically loaded by Terraform and provides a convenient way to

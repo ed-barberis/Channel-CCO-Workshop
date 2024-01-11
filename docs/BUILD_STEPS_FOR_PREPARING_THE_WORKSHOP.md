@@ -29,7 +29,7 @@ VM consists of the following type:
 
 -	__LPAD VM__: A 'Launchpad' Lab VM with pre-configured tooling for Kubernetes and AWS CLI Operations.
 
-For SE-lead workshops, the Lab VM image is built and maintained by Cisco/AppDynamics. However, all of the 
+For SE-lead workshops, the Lab VM image is built and maintained by Cisco AppDynamics. However, all of the 
 artifacts used to build the image are present in this project, so customers are free to customize and 
 build their own VM images if desired.  
 

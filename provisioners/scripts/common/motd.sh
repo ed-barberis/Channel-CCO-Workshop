@@ -1,7 +1,7 @@
 #!/bin/sh -eux
 
 devops='
-This system was built with the Channel CCO Workshop project by the Cisco/AppDynamics Cloud Channel Sales Team.
+This system was built with the Channel CCO Workshop project by the Cisco AppDynamics Cloud Channel Sales Team.
 More information can be found at: https://github.com/ed-barberis/Channel-CCO-Workshop.git'
 
 if [ -d /etc/update-motd.d ]; then
