@@ -7,7 +7,7 @@ user_group="${user_group:-}"
 user_home="${user_home:-}"
 user_docker_profile="${user_docker_profile:-false}"
 user_prompt_color="${user_prompt_color:-green}"
-d_completion_release="${d_completion_release:-24.0.7}"
+d_completion_release="${d_completion_release:-25.0.0}"
 
 # set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/cco-lab-devops}"
@@ -27,7 +27,7 @@ Usage:
                                                                 #            valid colors:
                                                                 #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
                                                                 #
-    [root]# export d_completion_release="24.0.7"                # [optional] docker completion for bash release (defaults to '24.0.7').
+    [root]# export d_completion_release="25.0.0"                # [optional] docker completion for bash release (defaults to '25.0.0').
     [root]# export devops_home="/opt/cco-lab-devops"            # [optional] devops home (defaults to '/opt/cco-lab-devops').
     [root]# $0
 EOF
