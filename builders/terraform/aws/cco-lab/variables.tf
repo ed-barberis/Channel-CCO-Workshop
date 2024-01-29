@@ -135,7 +135,7 @@ variable "aws_eks_instance_disk_size" {
   default     = 80
 }
 
-# valid aws eks versions are: 1.24, 1.25, 1.26, 1.27, and 1.28.
+# valid aws eks versions are: 1.24, 1.25, 1.26, 1.27, 1.28, and 1.29.
 variable "aws_eks_kubernetes_version" {
   description = "Kubernetes version to use for the EKS cluster."
   type        = string
