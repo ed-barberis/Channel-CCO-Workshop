@@ -257,7 +257,7 @@ __LPAD VM__ - The following AWS CLI command-line tools and utilities are pre-ins
 -	AppDynamics Node.js Serverless Tracer 21.11.348
 -	Docker 20.10.23 CE
 	-	Docker Bash Completion
-	-	Docker Compose 2.24.3
+	-	Docker Compose 2.24.5
 -	Git 2.43.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.3 (AVH Edition)
@@ -275,13 +275,13 @@ __LPAD VM__ - The following AWS CLI command-line tools and utilities are pre-ins
 -	Node.js JavaScript runtime v16.20.2
 -	npm JavaScript Package Manager for Node.js 9.9.2
 -	nvm (Node Version Manager) bash script 0.39.7
--	Packer 1.10.0
+-	Packer 1.10.1
 -	Python 2.7.18
 	-	Pip 23.3.2
 -	Python 3.7.10
 	-	Pip3 23.3.2
 -	Serverless Framework CLI 3.38.0
--	Terraform 1.7.1
+-	Terraform 1.7.2
 -	VIM - Vi IMproved 9.1
 -	XMLStarlet 1.6.1 (command-line XML processor)
 -	yq 4.40.5 (command-line YAML processor)
