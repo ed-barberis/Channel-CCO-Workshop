@@ -75,6 +75,11 @@ rm -f collectors-values-with-logging.yaml
 cat <<EOF > collectors-values-with-logging.yaml
 global:
   clusterName: ${cluster_name}
+  oauth:
+    clientId: ${client_id}
+    clientSecret: ${client_secret}
+    endpoint: ${collector_endpoint}
+    tokenUrl: ${token_url}
 appdynamics-cloud-k8s-monitoring:
   install:
     logCollector: true
