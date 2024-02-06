@@ -18,12 +18,12 @@
 # NOTE: Script should be run with 'root' privilege.
 #---------------------------------------------------------------------------------------------------
 
-# [OPTIONAL] appdynamics cloud kickstart home folder [w/ default].
-kickstart_home="${kickstart_home:-/opt/appd-cloud-kickstart}"
+# [OPTIONAL] devops home folder [w/ default].
+devops_home="${devops_home:-/opt/cco-lab-devops}"
 
 # create temporary download directory. -------------------------------------------------------------
-mkdir -p ${kickstart_home}/provisioners/scripts/centos/aws
-cd ${kickstart_home}/provisioners/scripts/centos/aws
+mkdir -p ${devops_home}/provisioners/scripts/centos/aws
+cd ${devops_home}/provisioners/scripts/centos/aws
 
 # download ec2 instance connect rpm files. ---------------------------------------------------------
 curl --silent --location https://amazon-ec2-instance-connect-us-west-2.s3.us-west-2.amazonaws.com/latest/linux_amd64/ec2-instance-connect.rhel8.rpm --output ec2-instance-connect.rpm
