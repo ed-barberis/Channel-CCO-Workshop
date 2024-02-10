@@ -1,4 +1,4 @@
-#!/bin/sh -eux
+#!/bin/bash
 #---------------------------------------------------------------------------------------------------
 # Create CCO Lab User with associated Group and Policies.
 #
@@ -6,8 +6,9 @@
 # the person or application that uses it to interact with AWS. A user in AWS consists of a name and
 # credentials.
 #
-# To simplify workshop provisioning, all lab participants will make use of a single CCO Lab User.
-# Each participant will login to the AWS Console in order to access their Cloud9 IDE.
+# To simplify workshop provisioning, all lab participants will make use of the CCO Lab User
+# assigned to them. Each participant will login to the AWS Console in order to access their Cloud9
+# IDE.
 # 
 # For more details, please visit:
 #   https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html
@@ -73,19 +74,32 @@ fi
 
 # create cco lab group and attach group policies. --------------------------------------------------
 # create cco lab group.
+echo "Creating CCO Lab group in AWS..."
+echo "aws iam create-group --group-name ${aws_group_name}"
 aws iam create-group --group-name ${aws_group_name}
 
 # attach group policies to cco lab group.
+echo "Attaching group policies to CCO Lab group..."
+echo "aws iam attach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
+echo "aws iam attach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+echo "aws iam attach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AWSCloud9EnvironmentMember"
+
 aws iam attach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess
 aws iam attach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
 aws iam attach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AWSCloud9EnvironmentMember
 
 # create cco lab user and add to cco lab group. ----------------------------------------------------
 # create cco lab user.
+echo "Creating CCO Lab user in AWS..."
+echo "aws iam create-user --user-name ${aws_user_name}-${cco_lab_number}"
 aws iam create-user --user-name ${aws_user_name}
+
+echo "aws iam create-login-profile --user-name ${aws_user_name}-${cco_lab_number} --password \"${aws_user_password}\" --no-password-reset-required"
 aws iam create-login-profile --user-name ${aws_user_name} --password "${aws_user_password}" --no-password-reset-required
 
 # add cco lab user to cco lab group.
+echo "Adding CCO Lab user to CCO Lab group..."
+echo "aws iam add-user-to-group --group-name ${aws_group_name} --user-name ${aws_user_name}-${cco_lab_number}"
 aws iam add-user-to-group --group-name ${aws_group_name} --user-name ${aws_user_name}
 
 # print completion message.

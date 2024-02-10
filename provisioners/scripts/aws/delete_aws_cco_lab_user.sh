@@ -1,4 +1,4 @@
-#!/bin/sh -eux
+#!/bin/bash
 #---------------------------------------------------------------------------------------------------
 # Delete CCO Lab User with associated Group and Policies.
 #
@@ -6,8 +6,9 @@
 # the person or application that uses it to interact with AWS. A user in AWS consists of a name and
 # credentials.
 #
-# To simplify workshop provisioning, all lab participants will make use of a single CCO Lab User.
-# Each participant will login to the AWS Console in order to access their Cloud9 IDE.
+# To simplify workshop provisioning, all lab participants will make use of the CCO Lab User
+# assigned to them. Each participant will login to the AWS Console in order to access their Cloud9
+# IDE.
 # 
 # For more details, please visit:
 #   https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html
@@ -20,7 +21,7 @@
 #---------------------------------------------------------------------------------------------------
 
 # set default values for input environment variables if not set. -----------------------------------
-# [OPTIONAL] aws create user install parameters [w/ defaults].
+# [OPTIONAL] aws delete user install parameters [w/ defaults].
 aws_user_name="${aws_user_name:-cco-lab-user}"
 aws_group_name="${aws_group_name:-cco-lab-group}"
 local_devops_home="${local_devops_home:-${HOME}/Channel-CCO-Workshop}"
@@ -63,19 +64,33 @@ if [ -z "$aws_group" ]; then
 fi
 
 # remove user from cco lab group and delete cco lab user. ------------------------------------------
+echo "Removing CCO Lab user from CCO Lab group..."
+echo "aws iam remove-user-from-group --group-name ${aws_group_name} --user-name ${aws_user_name}"
 aws iam remove-user-from-group --group-name ${aws_group_name} --user-name ${aws_user_name}
 
 # delete cco lab user.
+echo "Deleting CCO Lab user profile..."
+echo "aws iam delete-login-profile --user-name ${aws_user_name}"
 aws iam delete-login-profile --user-name ${aws_user_name}
+
+echo "Deleting CCO Lab user in AWS..."
+echo "aws iam delete-user --user-name ${aws_user_name}"
 aws iam delete-user --user-name ${aws_user_name}
 
 # detach group policies and delete cco lab group. --------------------------------------------------
 # detach group policies from cco lab group.
+echo "Detaching group policies from CCO Lab group..."
+echo "aws iam detach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
+echo "aws iam detach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+echo "aws iam detach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AWSCloud9EnvironmentMember"
+
 aws iam detach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess
 aws iam detach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
 aws iam detach-group-policy --group-name ${aws_group_name} --policy-arn arn:aws:iam::aws:policy/AWSCloud9EnvironmentMember
 
 # delete cco lab group.
+echo "Deleting CCO Lab group in AWS..."
+echo "aws iam delete-group --group-name ${aws_group_name}"
 aws iam delete-group --group-name ${aws_group_name}
 
 # print completion message.

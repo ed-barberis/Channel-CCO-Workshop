@@ -95,9 +95,9 @@ cco_cloud9_user_share_array=()
 
 # create user arns array for appd cisco runon aws account.
 if [ "${aws_account_id}" == "395719258032" ]; then
-  cco_cloud9_user_share_array+=( "arn:aws:iam::395719258032:user/cloud9-lab-user-01" )
-  cco_cloud9_user_share_array+=( "arn:aws:iam::395719258032:user/ed.barberis" )
-  cco_cloud9_user_share_array+=( "arn:aws:iam::395719258032:user/james.schneider" )
+  cco_cloud9_user_share_array+=( "arn:aws:iam::395719258032:user/cco-lab-user-01" )
+# cco_cloud9_user_share_array+=( "arn:aws:iam::395719258032:user/ed.barberis" )
+# cco_cloud9_user_share_array+=( "arn:aws:iam::395719258032:user/james.schneider" )
   cco_cloud9_user_share_array+=( "arn:aws:sts::395719258032:assumed-role/admin/ebarberi@cisco.com" )
   cco_cloud9_user_share_array+=( "arn:aws:sts::395719258032:assumed-role/admin/james101@cisco.com" )
 # cco_cloud9_user_share_array+=( "arn:aws:sts::395719258032:assumed-role/admin/avkumar7@cisco.com" )
