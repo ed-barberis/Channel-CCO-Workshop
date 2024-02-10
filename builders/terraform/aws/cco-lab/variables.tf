@@ -139,7 +139,7 @@ variable "aws_eks_instance_disk_size" {
 variable "aws_eks_kubernetes_version" {
   description = "Kubernetes version to use for the EKS cluster."
   type        = string
-  default     = "1.28"
+  default     = "1.29"
 }
 
 variable "lab_ssh_pub_key_name" {
