@@ -221,7 +221,7 @@ module "vm" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = ">= 19.21.0"
+  version = ">= 20.2.1"
 
   cluster_name    = local.cluster_name
   cluster_version = var.aws_eks_kubernetes_version
@@ -269,19 +269,26 @@ module "eks" {
     }
   }
 
-  manage_aws_auth_configmap = true
+  authentication_mode = "API"
 
-  # list of additional roles admin in the cluster.
-  aws_auth_roles = [
-    {
-      rolearn  = aws_iam_role.ec2_access_role.arn
-      username = "ccolabuser"
-      groups   = ["system:masters"]
+  enable_cluster_creator_admin_permissions = true
+
+  access_entries = {
+    # allow the ec2 access role to administer the cluster.
+    role-access = {
+      kubernetes_groups = []
+      principal_arn     = aws_iam_role.ec2_access_role.arn
+
+      policy_associations = {
+        single = {
+          policy_arn   = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
+      }
     }
-  ]
-
-# map_users    = var.map_users
-# map_accounts = var.map_accounts
+  }
 }
 
 # Resources ----------------------------------------------------------------------------------------
