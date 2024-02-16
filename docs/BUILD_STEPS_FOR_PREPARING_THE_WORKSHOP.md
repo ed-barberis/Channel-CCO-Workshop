@@ -67,20 +67,20 @@ specific instructions for installing the required software are left as an exerci
 
 For macOS environments, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 4.2.7
--	Git 2.43.1
+-	Homebrew 4.2.8
+-	Git 2.43.2
 -	Packer 1.10.1
 -	Terraform 1.7.3
 -	jq 1.7.1
 
 Perform the following steps to install the needed software:
 
-1.	Install the [Homebrew 4.2.7](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+1.	Install the [Homebrew 4.2.8](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     ```bash
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     ```
 
-2.	Install [Git 2.43.1](https://git-scm.com/downloads) for macOS 64-bit.  
+2.	Install [Git 2.43.2](https://git-scm.com/downloads) for macOS 64-bit.  
     ```bash
     brew install git
     ```
@@ -106,13 +106,13 @@ Perform the following steps to install the needed software:
 
     ```bash
     brew --version
-    # Homebrew 4.2.7
+    # Homebrew 4.2.8
 
     brew doctor
     # Your system is ready to brew.
 
     git --version
-    # git version 2.43.1
+    # git version 2.43.2
 
     packer --version
     # 1.10.1
@@ -148,7 +148,7 @@ Here is a list of the recommended open source software to be installed on the ho
 
 -	Curl 7.68.0 (Ubuntu 64-bit only)
 -	Wget 1.21.1 (Ubuntu 64-bit only)
--	Git 2.43.1
+-	Git 2.43.0
 -	Packer 1.10.1
 -	Terraform 1.7.3
 -	jq 1.7.1
@@ -157,7 +157,7 @@ Here is a list of the recommended open source software to be installed on the ho
 
 Perform the following steps to install the needed software:
 
-1.	Install [Git 2.43.1](https://github.com/git-for-windows/git/releases/download/v2.43.1.windows.1/Git-2.43.1-64-bit.exe) for Windows 64-bit.
+1.	Install [Git 2.43.0](https://github.com/git-for-windows/git/releases/download/v2.43.0.windows.1/Git-2.43.0-64-bit.exe) for Windows 64-bit.
 
 2.	Install [Packer 1.10.1](https://releases.hashicorp.com/packer/1.10.1/packer_1.10.1_windows_amd64.zip) for Windows 64-bit.  
     Create suggested install folder and extract contents of ZIP file to:  
@@ -188,7 +188,7 @@ Perform the following steps to install the needed software:
 
     ```bash
     git --version
-    # git version 2.43.1.windows.1
+    # git version 2.43.0.windows.1
 
     packer --version
     # 1.10.1
@@ -220,7 +220,7 @@ Perform the following steps to install the needed software:
     sudo apt install wget
     ```
 
-3.	Install [Git 2.43.1](https://git-scm.com/downloads) for Ubuntu 64-bit.  
+3.	Install [Git 2.43.2](https://git-scm.com/downloads) for Ubuntu 64-bit.  
     ```bash
     sudo apt install git
     ```
@@ -252,7 +252,7 @@ Perform the following steps to install the needed software:
 
     ```bash
     git --version
-    # git version 2.43.1
+    # git version 2.43.2
 
     packer --version
     # 1.10.1

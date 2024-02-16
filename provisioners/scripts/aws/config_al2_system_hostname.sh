@@ -3,7 +3,7 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] aws ec2 hostname config parameters [w/ defaults].
-aws_ec2_hostname="${aws_ec2_hostname:-apm}"
+aws_ec2_hostname="${aws_ec2_hostname:-cco-lab}"
 aws_ec2_domain="${aws_ec2_domain:-localdomain}"
 
 # set the system hostname. -------------------------------------------------------------------------
