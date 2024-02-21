@@ -98,7 +98,7 @@ For macOS environments, the following open source software needs to be installed
 -	Git 2.43.2
 -	Amazon AWS CLI 2.15.21 (command-line interface)
 -	Packer 1.10.1
--	Terraform 1.7.3
+-	Terraform 1.7.4
 -	jq 1.7.1
 
 Perform the following steps to install the needed software:
@@ -124,7 +124,7 @@ Perform the following steps to install the needed software:
     brew install hashicorp/tap/packer
     ```
 
-5.	Install [Terraform 1.7.3](https://www.terraform.io/downloads.html) for macOS 64-bit.  
+5.	Install [Terraform 1.7.4](https://www.terraform.io/downloads.html) for macOS 64-bit.  
     ```bash
     brew tap hashicorp/tap
     brew install hashicorp/tap/terraform
@@ -156,7 +156,7 @@ Perform the following steps to install the needed software:
     # 1.10.1
 
     terraform --version
-    # Terraform v1.7.3
+    # Terraform v1.7.4
 
     jq --version
     # jq-1.7.1
@@ -188,7 +188,7 @@ Here is a list of the recommended open source software to be installed on the ho
 -	Wget 1.21.1 (Ubuntu 64-bit only)
 -	Git 2.43.0
 -	Packer 1.10.1
--	Terraform 1.7.3
+-	Terraform 1.7.4
 -	jq 1.7.1
 
 ### Git Bash installation - Windows 64-Bit
@@ -210,7 +210,7 @@ Perform the following steps to install the needed software:
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\bin`  
 
-4.	Install [Terraform 1.7.3](https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_windows_amd64.zip) for Windows 64-bit.  
+4.	Install [Terraform 1.7.4](https://releases.hashicorp.com/terraform/1.7.4/terraform_1.7.4_windows_amd64.zip) for Windows 64-bit.  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\bin`  
 
@@ -244,7 +244,7 @@ Perform the following steps to install the needed software:
     # 1.10.1
 
     terraform --version
-    # Terraform v1.7.3
+    # Terraform v1.7.4
 
     jq --version
     # jq-1.7.1
@@ -315,12 +315,12 @@ aws_cli_sig_file="${aws_cli_binary}.sig"
     sudo rm -i packer_1.10.1_linux_amd64.zip
     ```
 
-5.	Install [Terraform 1.7.3](https://www.terraform.io/downloads.html) for Ubuntu 64-bit.  
+5.	Install [Terraform 1.7.4](https://www.terraform.io/downloads.html) for Ubuntu 64-bit.  
     ```bash
     cd /usr/local/bin
-    sudo wget https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_amd64.zip
-    sudo unzip terraform_1.7.3_linux_amd64.zip
-    sudo rm -i terraform_1.7.3_linux_amd64.zip
+    sudo wget https://releases.hashicorp.com/terraform/1.7.4/terraform_1.7.4_linux_amd64.zip
+    sudo unzip terraform_1.7.4_linux_amd64.zip
+    sudo rm -i terraform_1.7.4_linux_amd64.zip
     ```
 
 6.	Install [jq 1.7.1](https://jqlang.github.io/jq/) for macOS 64-bit.  
@@ -340,7 +340,7 @@ aws_cli_sig_file="${aws_cli_binary}.sig"
     # 1.10.1
 
     terraform --version
-    # Terraform v1.7.3
+    # Terraform v1.7.4
 
     jq --version
     # jq-1.7.1
