@@ -4,7 +4,12 @@
 The provisioning, configuration, and preparation needed for delivering the Cisco Cloud Observability 
 (CCO) workshop can be an extremely tedious and time-consuming challenge for SE's. To solve that problem, 
 the Channel CCO Workshop project delivers a set of artifacts to automate the build, deployment, and 
-configuration portion of these pre-workshop activities using open source tooling.
+configuration portion of these pre-workshop activities using open source tooling.  
+
+Here is a diagram of the architecture when deployed to the AWS Cloud Platform:  
+
+__Cisco Cloud Observability Workshop: Deployment on AWS__
+![Deployment_on_AWS](./images/CCO-Workshop-Deployment-on-AWS.png)
 
 ## Build and Deployment Tools
 
@@ -96,7 +101,7 @@ For macOS environments, the following open source software needs to be installed
 
 -	Homebrew 4.2.9
 -	Git 2.43.2
--	Amazon AWS CLI 2.15.21 (command-line interface)
+-	Amazon AWS CLI 2.15.22 (command-line interface)
 -	Packer 1.10.1
 -	Terraform 1.7.4
 -	jq 1.7.1
@@ -113,7 +118,7 @@ Perform the following steps to install the needed software:
     brew install git
     ```
 
-3.	Install [AWS CLI 2.15.21](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html).  
+3.	Install [AWS CLI 2.15.22](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html).  
     ```bash
     brew install awscli@2
     ```
@@ -150,7 +155,7 @@ Perform the following steps to install the needed software:
     # git version 2.43.2
 
     aws --version
-    # aws-cli/2.15.21 Python/3.11.7 Darwin/23.3.0 source/arm64 prompt/off
+    # aws-cli/2.15.22 Python/3.11.7 Darwin/23.3.0 source/arm64 prompt/off
 
     packer --version
     # 1.10.1
@@ -197,7 +202,7 @@ Perform the following steps to install the needed software:
 
 1.	Install [Git 2.43.0](https://github.com/git-for-windows/git/releases/download/v2.43.0.windows.1/Git-2.43.0-64-bit.exe) for Windows 64-bit.
 
-2.	Install [AWS CLI 2.15.21](https://awscli.amazonaws.com/AWSCLIV2.msi) for Windows 64-bit.  
+2.	Install [AWS CLI 2.15.22](https://awscli.amazonaws.com/AWSCLIV2.msi) for Windows 64-bit.  
     Run the downloaded MSI installer and follow the on-screen instructions.  
 
     **NOTE:** For Windows users, the MSI installation package offers a familiar and convenient way to 
@@ -238,7 +243,7 @@ Perform the following steps to install the needed software:
     # git version 2.43.0.windows.1
 
     aws --version
-    # aws-cli/2.15.21 Python/3.11.6 Windows/10 exe/AMD64 prompt/off
+    # aws-cli/2.15.22 Python/3.11.6 Windows/10 exe/AMD64 prompt/off
 
     packer --version
     # 1.10.1
