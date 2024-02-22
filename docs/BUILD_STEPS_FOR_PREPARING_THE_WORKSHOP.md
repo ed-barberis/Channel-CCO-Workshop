@@ -6,7 +6,7 @@ The provisioning, configuration, and preparation needed for delivering the Cisco
 the Channel CCO Workshop project delivers a set of artifacts to automate the build, deployment, and 
 configuration portion of these pre-workshop activities using open source tooling.  
 
-Here is a diagram of the architecture when deployed to the AWS Cloud Platform:  
+Here is a diagram of the deployment architecture when deployed to the AWS Cloud Platform:  
 
 __Cisco Cloud Observability Workshop: Deployment on AWS__
 ![Deployment_on_AWS](./images/CCO-Workshop-Deployment-on-AWS.png)
@@ -21,7 +21,7 @@ following set of command-line utilities on either your local machine or a suitab
 [Git](https://git-scm.com/) is a fast, scalable, distributed revision control system with an unusually 
 rich command set that provides both high-level operations and full access to internals.  
 
-For more details, please visit the Git GitHub project home [here](https://github.com/git/git).
+For more details, please visit the Git project home [here](https://github.com/git/git).
 
 ### AWS Command Line Interface (v2)
 
@@ -50,15 +50,16 @@ a pre-configured operating system and installed software which is used to quickl
 machines.  
 
 As part of this project, Packer is used to create an immutable Lab VM image consisting of a standardized 
-installation of Amazon Linux 2023 with a set of common software. This static image is later used by Terraform 
-when standing-up the infrastructure and compute resources needed by workshop participants. Currently, this 
-VM consists of the following type:
+installation of Amazon Linux 2023 (the default) with a set of common software. This static machine image is 
+later used by Terraform when standing-up the infrastructure and compute resources needed by workshop 
+participants. Currently, this VM consists of the following type:
 
--	__CCO Lab LPAD VM__: A 'Launchpad' Lab VM with pre-configured tooling for Kubernetes and AWS CLI Operations.
+-	__CCO Lab VM__: A 'Launchpad' Lab VM with pre-configured tooling for Kubernetes and AWS CLI operations.
 
 For SE-lead workshops, the Lab VM image is built and maintained by Cisco AppDynamics. However, all of the 
 artifacts used to build the image are present in this project, so customers are free to customize and 
-build their own VM images if desired.  
+build their own VM images if desired. Additional support for Amazon Linux 2, CentOS 7.9, Ubuntu 20.04, and 
+Ubuntu 22.04 is also available.
 
 ### Terraform
 
