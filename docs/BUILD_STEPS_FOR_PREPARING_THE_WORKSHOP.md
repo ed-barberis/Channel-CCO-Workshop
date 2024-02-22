@@ -13,8 +13,10 @@ __Cisco Cloud Observability Workshop: Deployment on AWS__
 
 ## Build and Deployment Tools
 
-In order to build and deploy the Channel CCO Workshop resources, you will first need to install the 
-following set of command-line utilities on either your local machine or a suitable VM:
+Although there are many tools available to accomplish the project's automation goals, it was decided to 
+standardize on the following list of open source tools. This is primarily due to their capability for 
+building and deploying software platforms to multi-cloud environments, as well as having a high level of 
+adoption within the developer community.
 
 ### Git
 
@@ -37,9 +39,7 @@ you to cleanup and delete any resources created by the DevOps tooling when you a
 purging old AMI images created by Packer.  
 
 The AWS CLI version 2 is the most recent major version of the AWS CLI and supports all of the latest 
-features. Please see the 
-[AWS CLI installation guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) 
-to get started.
+features.
 
 ### Packer
 
@@ -54,7 +54,7 @@ installation of Amazon Linux 2023 (the default) with a set of common software. T
 later used by Terraform when standing-up the infrastructure and compute resources needed by workshop 
 participants. Currently, this VM consists of the following type:
 
--	__CCO Lab VM__: A 'Launchpad' Lab VM with pre-configured tooling for Kubernetes and AWS CLI operations.
+-	__CCO Lab VM__: A 'Launchpad (LPAD)' Lab VM with pre-configured tooling for Kubernetes and AWS CLI operations.
 
 For SE-lead workshops, the Lab VM image is built and maintained by Cisco AppDynamics. However, all of the 
 artifacts used to build the image are present in this project, so customers are free to customize and 
@@ -72,16 +72,11 @@ etc.
 In this project, Terraform is used to automate the deployment of the Lab infrastructure, including VPCs, 
 subnets, security groups, load balancers, Kubdernetes clusters, and Lab VM using templates.
 
-Installation guides for your platform can be found 
-[here](https://developer.hashicorp.com/terraform/downloads).
-
 ### jq
 
 [jq](https://jqlang.github.io/jq/) is a lightweight and flexible command-line JSON processor akin to `sed`, 
 `awk`, and `grep` for JSON data. It's written in portable C and has zero runtime dependencies, allowing you 
 to easily slice, filter, map, and transform structured data.
-
-The [jq binaries](https://github.com/jqlang/jq/releases/latest/) can be downloaded from GitHub.
 
 ## Get Started
 
@@ -147,25 +142,33 @@ Perform the following steps to install the needed software:
 
     ```bash
     brew --version
-    # Homebrew 4.2.9
-
-    brew doctor
-    # Your system is ready to brew.
-
     git --version
-    # git version 2.43.2
-
     aws --version
-    # aws-cli/2.15.22 Python/3.11.7 Darwin/23.3.0 source/arm64 prompt/off
-
     packer --version
-    # 1.10.1
-
     terraform --version
-    # Terraform v1.7.4
-
     jq --version
-    # jq-1.7.1
+    ```
+
+    ```bash
+    # example
+    $ brew --version
+    Homebrew 4.2.9
+
+    $ git --version
+    git version 2.43.2
+
+    $ aws --version
+    aws-cli/2.15.22 Python/3.11.7 Darwin/23.3.0 source/arm64 prompt/off
+
+    $ packer --version
+    Packer v1.10.1
+
+    $ terraform --version
+    Terraform v1.7.4
+    on darwin_arm64
+
+    $ jq --version
+    jq-1.7.1
     ```
 
 2.	Configure Git for local user:
