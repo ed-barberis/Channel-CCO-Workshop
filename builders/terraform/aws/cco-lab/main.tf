@@ -265,7 +265,7 @@ module "eks" {
         ec2_ssh_key               = var.lab_ssh_pub_key_name
         source_security_group_ids = null
 #       source_security_group_ids = [data.aws_security_group.eks_remote.id]
-    }
+      }
     }
   }
 
