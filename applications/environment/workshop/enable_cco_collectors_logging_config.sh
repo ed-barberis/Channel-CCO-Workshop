@@ -25,7 +25,7 @@
 # check if 'collectors-values.yaml' file exists.
 if [ ! -f "collectors-values.yaml" ]; then
   echo "ERROR: 'collectors-values.yaml' file NOT found."
-  echo "Please generate and download from your Cisco Cloud Observabilty Tenant."
+  echo "Please generate and download from your Cisco Cloud Observability Tenant."
   echo "For more information, visit:"
   echo "  https://docs.appdynamics.com/fso/cloud-native-app-obs/en/kubernetes-and-app-service-monitoring"
   exit 1
@@ -82,18 +82,29 @@ global:
     tokenUrl: ${token_url}
 appdynamics-cloud-k8s-monitoring:
   install:
+    clustermon: true
+    defaultInfraCollectors: true
     logCollector: true
   clustermonConfig:
+    os: linux
     events:
       enabled: true
       severityToExclude: []
       reasonToExclude: []
       severeGroupByReason: []
+  containermonConfig:
+    os:
+      - linux
+  servermonConfig:
+    os:
+      - linux
   logCollectorConfig:
+    os:
+      - linux
     container:
       logging:
         level: debug
-      conditionalConfigs: # renamed from conditions -> conditionalConfigs
+      conditionalConfigs:
         - condition:
             operator: contains
             key: kubernetes.pod.name
@@ -114,6 +125,9 @@ appdynamics-otel-collector:
   clientSecret: ${client_secret}
   endpoint: ${collector_endpoint}
   tokenUrl: ${token_url}
+  enableNetworkMonitoring: true
+appdynamics-network-monitoring:
+  enabled: true
 EOF
 echo ""
 

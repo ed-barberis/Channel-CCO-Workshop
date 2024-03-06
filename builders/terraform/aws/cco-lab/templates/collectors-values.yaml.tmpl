@@ -1,24 +1,64 @@
 global:
   clusterName: ${cluster_name}
+  oauth:
+    clientId: ${client_id}
+    clientSecret: ${client_secret}
+    endpoint: ${collector_endpoint}
+    tokenUrl: ${token_url}
 appdynamics-cloud-k8s-monitoring:
-  global:
-    clusterName: ${cluster_name}
   install:
     clustermon: true
     defaultInfraCollectors: true
-    logCollector: ${install_log_collector}
+    logCollector: true
+  clustermonConfig:
+    os: linux
+    events:
+      enabled: true
+      severityToExclude: []
+      reasonToExclude: []
+      severeGroupByReason: []
+  containermonConfig:
+    os:
+      - linux
+  servermonConfig:
+    os:
+      - linux
   logCollectorConfig:
+    os:
+      - linux
     container:
-      defaultConfig:
-        multiLinePattern: '^{'
-        multiLineMatch: "after"
-        multiLineNegate: true
-        logFormat: "logs:email_logs"
-        messageParser:
-          json:
-            enabled: true
+      logging:
+        level: debug
+      conditionalConfigs:
+        - condition:
+            operator: contains
+            key: kubernetes.pod.name
+            value: ad-service
+          config: # new
+            messageParser:
+              log4J:
+                enabled: true
+                pattern: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg trace_id=%X{trace_id} span_id=%X{span_id} trace_flags=%X{trace_flags} %n"
+            multiLineMatch: after
+            multiLinePattern: '^\d{4}-\d{2}-\d{2}'
+            multiLineNegate: true
+      dropFields: ["agent", "stream", "ecs", "input", "orchestrator", "k8s.annotations.appdynamics", "k8s.labels", "k8s.node.labels", "cloud"]
+      batchSize: 1000
+      maxBytes: 1000000
 appdynamics-otel-collector:
   clientId: ${client_id}
   clientSecret: ${client_secret}
   endpoint: ${collector_endpoint}
   tokenUrl: ${token_url}
+  enableNetworkMonitoring: true
+appdynamics-network-monitoring:
+  enabled: true
+%{ if security_monitoring_enabled }
+appdynamics-security-collector:
+  enabled: true
+  panoptica:
+    controller:
+      agentID: ${agent_id}
+      secret:
+        sharedSecret: ${shared_secret}
+%{ endif }
