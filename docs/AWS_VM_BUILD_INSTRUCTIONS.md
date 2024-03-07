@@ -21,18 +21,18 @@ required Python 3 libraries are now embedded in the installer and no longer need
 
 Here is a list of the recommended open source software to be installed on the host macOS machine:
 
--	Amazon AWS CLI 2.15.25 (command-line interface)
+-	Amazon AWS CLI 2.15.26 (command-line interface)
 
 Perform the following steps to install the needed software:
 
-1.	Install [AWS CLI 2.15.25](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html).  
+1.	Install [AWS CLI 2.15.26](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html).  
     `brew install awscli@2`  
 
 2.	Validate installed command-line tools:
 
     ```bash
     aws --version
-    # aws-cli/2.15.25 Python/3.11.8 Darwin/23.3.0 source/arm64 prompt/off
+    # aws-cli/2.15.26 Python/3.11.8 Darwin/23.3.0 source/arm64 prompt/off
     ```
 
 ## AWS-Specific Installation Instructions - Windows 64-Bit
@@ -50,13 +50,13 @@ installation.
 
 Here is a list of the recommended open source software to be installed on the host Windows machine:
 
--	Amazon AWS CLI 2.15.25 (command-line interface)
+-	Amazon AWS CLI 2.15.26 (command-line interface)
 
 ### Git Bash installation - Windows 64-Bit
 
 Perform the following steps to install the needed software:
 
-1.	Install [AWS CLI 2.15.25](https://awscli.amazonaws.com/AWSCLIV2.msi) for Windows 64-bit.  
+1.	Install [AWS CLI 2.15.26](https://awscli.amazonaws.com/AWSCLIV2.msi) for Windows 64-bit.  
     Run the downloaded MSI installer and follow the on-screen instructions.  
 
     **NOTE:** For Windows users, the MSI installation package offers a familiar and convenient way to 
@@ -69,12 +69,12 @@ Perform the following steps to install the needed software:
 
     ```bash
     aws --version
-    # aws-cli/2.15.25 Python/3.11.6 Windows/10 exe/AMD64 prompt/off
+    # aws-cli/2.15.26 Python/3.11.6 Windows/10 exe/AMD64 prompt/off
     ```
 
 ### Windows Subsystem for Linux (WSL) installation - Ubuntu 64-Bit
 
-1.	Install [AWS CLI 2.15.25](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) for Ubuntu 64-bit.  
+1.	Install [AWS CLI 2.15.26](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) for Ubuntu 64-bit.  
     ```bash
     cd /tmp
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -247,7 +247,7 @@ __NOTE:__ The following steps are repeated for each major element of the worksho
 
 __LPAD VM__ - The following AWS CLI command-line tools and utilities are pre-installed:
 
--	Amazon AWS CLI 2.15.25 (command-line interface)
+-	Amazon AWS CLI 2.15.26 (command-line interface)
 -	Amazon AWS Cloud9 IDE
 -	Amazon AWS EC2 Instance Metadata Query Tool (command-line interface)
 -	Amazon AWS EKS CLI [eksctl] 0.173.0 (command-line interface)
@@ -257,7 +257,7 @@ __LPAD VM__ - The following AWS CLI command-line tools and utilities are pre-ins
 -	AppDynamics Node.js Serverless Tracer 21.11.348
 -	Docker 20.10.23 CE
 	-	Docker Bash Completion
-	-	Docker Compose 2.24.6
+	-	Docker Compose 2.24.7
 -	Git 2.44.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.3 (AVH Edition)
@@ -275,7 +275,7 @@ __LPAD VM__ - The following AWS CLI command-line tools and utilities are pre-ins
 -	Node.js JavaScript runtime v16.20.2
 -	npm JavaScript Package Manager for Node.js 9.9.3
 -	nvm (Node Version Manager) bash script 0.39.7
--	Packer 1.10.1
+-	Packer 1.10.2
 -	Python 2.7.18
 	-	Pip 24.0
 -	Python 3.7.10
