@@ -95,16 +95,16 @@ specific instructions for installing the required software are left as an exerci
 
 For macOS environments, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 4.2.11
+-	Homebrew 4.2.12
 -	Git 2.44.0
--	Amazon AWS CLI 2.15.26 (command-line interface)
+-	Amazon AWS CLI 2.15.27 (command-line interface)
 -	Packer 1.10.2
 -	Terraform 1.7.4
 -	jq 1.7.1
 
 Perform the following steps to install the needed software:
 
-1.	Install the [Homebrew 4.2.11](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+1.	Install the [Homebrew 4.2.12](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     ```bash
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     ```
@@ -114,7 +114,7 @@ Perform the following steps to install the needed software:
     brew install git
     ```
 
-3.	Install [AWS CLI 2.15.26](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html).  
+3.	Install [AWS CLI 2.15.27](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html).  
     ```bash
     brew install awscli@2
     ```
@@ -143,13 +143,13 @@ Perform the following steps to install the needed software:
     ```bash
     # example output.
     brew --version
-    # Homebrew 4.2.11
+    # Homebrew 4.2.12
 
     git --version
     # git version 2.44.0
 
     aws --version
-    # aws-cli/2.15.26 Python/3.11.8 Darwin/23.3.0 source/arm64 prompt/off
+    # aws-cli/2.15.27 Python/3.11.8 Darwin/23.4.0 source/arm64 prompt/off
 
     packer --version
     # Packer v1.10.2
@@ -185,7 +185,7 @@ installation.
 Here is a list of the recommended open source software to be installed on the host Windows machine:
 
 -	Curl 7.68.0 (Ubuntu 64-bit only)
--	Wget 1.21.1 (Ubuntu 64-bit only)
+-	Wget 1.21.2 (Ubuntu 64-bit only)
 -	Git 2.44.0
 -	Packer 1.10.2
 -	Terraform 1.7.4
@@ -197,7 +197,7 @@ Perform the following steps to install the needed software:
 
 1.	Install [Git 2.44.0](https://github.com/git-for-windows/git/releases/download/v2.44.0.windows.1/Git-2.44.0-64-bit.exe) for Windows 64-bit.
 
-2.	Install [AWS CLI 2.15.26](https://awscli.amazonaws.com/AWSCLIV2.msi) for Windows 64-bit.  
+2.	Install [AWS CLI 2.15.27](https://awscli.amazonaws.com/AWSCLIV2.msi) for Windows 64-bit.  
     Run the downloaded MSI installer and follow the on-screen instructions.  
 
     **NOTE:** For Windows users, the MSI installation package offers a familiar and convenient way to 
@@ -238,7 +238,7 @@ Perform the following steps to install the needed software:
     # git version 2.44.0.windows.1
 
     aws --version
-    # aws-cli/2.15.26 Python/3.11.6 Windows/10 exe/AMD64 prompt/off
+    # aws-cli/2.15.27 Python/3.11.6 Windows/10 exe/AMD64 prompt/off
 
     packer --version
     # 1.10.2
@@ -265,7 +265,7 @@ Perform the following steps to install the needed software:
     sudo apt install curl
     ```
 
-2.	Install [Wget 1.21.1](https://www.gnu.org/software/wget/manual/wget.html) for Ubuntu 64-bit.  
+2.	Install [Wget 1.21.2](https://www.gnu.org/software/wget/manual/wget.html) for Ubuntu 64-bit.  
     ```bash
     sudo apt install wget
     ```
