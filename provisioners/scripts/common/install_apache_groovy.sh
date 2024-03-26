@@ -3,10 +3,10 @@
 
 # install apache groovy. ---------------------------------------------------------------------------
 groovy_home="groovy"
-groovy_release="4.0.19"
+groovy_release="4.0.20"
 groovy_folder="${groovy_home}-${groovy_release}"
 groovy_sdk="apache-groovy-sdk-${groovy_release}.zip"
-groovy_sha256="b14670abfe74d2d79aca091cfecab5629b5c662b8d0310c42a143f342520b541"
+groovy_sha256="a1680827e7fea8f2d6bf7be495b5b4238f3b6c6d1784e9e1c3bda5cba9927184"
 
 #groovy_binary="apache-groovy-binary-${groovy_release}.zip"
 #groovy_docs="apache-groovy-docs-${groovy_release}.zip"
