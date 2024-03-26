@@ -9,7 +9,7 @@
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
-          "name": "al2023-ami-2023.3*x86_64*",
+          "name": "al2023-ami-2023.4*x86_64*",
           "root-device-type": "ebs"
         },
         "owners": ["amazon"],
@@ -140,6 +140,7 @@
         "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_11.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_17.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_21.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_22.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos9_python3.sh",
         "{{template_dir}}/../../../provisioners/scripts/aws/install_al2023_docker.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_docker_compose.sh",
