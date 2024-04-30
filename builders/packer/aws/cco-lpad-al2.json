@@ -85,6 +85,11 @@
       "type": "file"
     },
     {
+      "destination": "/home/{{user `aws_ec2_username`}}/undeploy_cco_lab_artifacts.sh",
+      "source": "{{template_dir}}/../../../applications/environment/workshop/undeploy_cco_lab_artifacts.sh",
+      "type": "file"
+    },
+    {
       "inline": [
         "sudo chown -R root:root {{user `devops_home`}}"
       ],
