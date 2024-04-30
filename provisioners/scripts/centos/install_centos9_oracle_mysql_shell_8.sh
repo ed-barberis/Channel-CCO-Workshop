@@ -1,17 +1,17 @@
 #!/bin/sh -eux
-# install oracle mysql shell command-line utility on centos linux 7.x.
+# install oracle mysql shell command-line utility on centos stream 9 linux.
 
-# set default value for appdynamics cloud kickstart home environment variable if not set. ----------
-kickstart_home="${kickstart_home:-/opt/appd-cloud-kickstart}"   # [optional] kickstart home (defaults to '/opt/appd-cloud-kickstart').
+# set default value for cco lab devops home environment variable if not set. -----------------------
+devops_home="${devops_home:-/opt/cco-lab-devops}"           # [optional] devops home (defaults to '/opt/cco-lab-devops').
 
 # create scripts directory (if needed). ------------------------------------------------------------
-mkdir -p ${kickstart_home}/provisioners/scripts/centos
-cd ${kickstart_home}/provisioners/scripts/centos
+mkdir -p ${devops_home}/provisioners/scripts/centos
+cd ${devops_home}/provisioners/scripts/centos
 
 # install mysql shell. -----------------------------------------------------------------------------
-mysqlsh_release="8.0.36-1"
+mysqlsh_release="8.0.37-1"
 mysqlsh_binary="mysql-shell-${mysqlsh_release}.el9.x86_64.rpm"
-mysqlsh_checksum="088b73e893bfdcebd92333a4dd4c1c59"
+mysqlsh_checksum="e1943fb65639ab889d344b385d5883d0"
 
 # download mysql shell repository.
 rm -f ${mysqlsh_binary}
@@ -19,7 +19,7 @@ wget --no-verbose --no-check-certificate --no-cookies --header "Cookie: oracleli
 
 # verify the downloaded binary using the md5 checksum.
 echo "${mysqlsh_checksum} ${mysqlsh_binary}" | md5sum --check -
-# amazon-corretto-${jdk_build}-linux-x64.tar.gz: OK
+# mysql-shell-${mysqlsh_release}.el9.x86_64.rpm: OK
 
 # install mysql shell. -----------------------------------------------------------------------------
 dnf -y install ${mysqlsh_binary}

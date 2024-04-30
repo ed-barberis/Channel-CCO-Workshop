@@ -1,8 +1,8 @@
 #!/bin/sh -eux
-# install oracle mysql shell command-line utility on centos linux 7.x.
+# install oracle mysql shell command-line utility on centos stream 8 linux.
 
 # set default value for cco lab devops home environment variable if not set. -----------------------
-devops_home="${devops_home:-/opt/cco-lab-devops}"
+devops_home="${devops_home:-/opt/cco-lab-devops}"           # [optional] devops home (defaults to '/opt/cco-lab-devops').
 
 # create scripts directory (if needed). ------------------------------------------------------------
 mkdir -p ${devops_home}/provisioners/scripts/centos
@@ -10,8 +10,8 @@ cd ${devops_home}/provisioners/scripts/centos
 
 # install mysql shell. -----------------------------------------------------------------------------
 mysqlsh_release="8.0.37-1"
-mysqlsh_binary="mysql-shell-${mysqlsh_release}.el7.x86_64.rpm"
-mysqlsh_checksum="25d5a8a228e9f6b7e924721899184326"
+mysqlsh_binary="mysql-shell-${mysqlsh_release}.el8.x86_64.rpm"
+mysqlsh_checksum="3dabd25d0a5fc8053cae2025b1a09c66"
 
 # download mysql shell repository.
 rm -f ${mysqlsh_binary}
@@ -19,10 +19,10 @@ wget --no-verbose --no-check-certificate --no-cookies --header "Cookie: oracleli
 
 # verify the downloaded binary using the md5 checksum.
 echo "${mysqlsh_checksum} ${mysqlsh_binary}" | md5sum --check -
-# mysql-shell-${mysqlsh_release}.el7.x86_64.rpm: OK
+# mysql-shell-${mysqlsh_release}.el8.x86_64.rpm: OK
 
 # install mysql shell. -----------------------------------------------------------------------------
-yum -y install ${mysqlsh_binary}
+dnf -y install ${mysqlsh_binary}
 
 # verify mysql shell installation.
 mysqlsh --version
