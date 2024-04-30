@@ -131,7 +131,7 @@ data "aws_security_group" "eks_remote" {
 # Modules ------------------------------------------------------------------------------------------
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = ">= 5.7"
+  version = ">= 5.8"
 
   name = local.vpc_name
   cidr = var.aws_vpc_cidr_block
@@ -221,7 +221,7 @@ module "vm" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = ">= 20.8.4"
+  version = ">= 20.8.5"
 
   cluster_name    = local.cluster_name
   cluster_version = var.aws_eks_kubernetes_version
