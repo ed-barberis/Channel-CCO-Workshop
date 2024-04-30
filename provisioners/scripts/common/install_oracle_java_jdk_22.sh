@@ -3,10 +3,10 @@
 
 # install java se 22 development kit. --------------------------------------------------------------
 jdk_home="jdk22"
-jdk_build="22"
+jdk_build="22.0.1"
 jdk_folder="jdk-${jdk_build}"
 jdk_binary="${jdk_folder}_linux-x64_bin.tar.gz"
-jdk_sha256="17feecbbbbd8f9a3e27d7dd7689b02ba29ebfa98af59034d26812d0a671ce194"
+jdk_sha256="bb1a6995ae63a04456b1f08fae70a71be59fc1e350c2748a252e87b07bc1c36e"
 
 # create java home parent folder.
 mkdir -p /usr/local/java
