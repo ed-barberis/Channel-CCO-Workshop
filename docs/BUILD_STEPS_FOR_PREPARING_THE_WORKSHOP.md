@@ -97,7 +97,7 @@ For macOS environments, the following open source software needs to be installed
 
 -	Homebrew 4.2.20
 -	Git 2.45.0
--	Amazon AWS CLI 2.15.42 (command-line interface)
+-	Amazon AWS CLI 2.15.44 (command-line interface)
 -	Packer 1.10.3
 -	Terraform 1.8.2
 -	jq 1.7.1
@@ -114,7 +114,7 @@ Perform the following steps to install the needed software:
     brew install git
     ```
 
-3.	Install [AWS CLI 2.15.42](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html).  
+3.	Install [AWS CLI 2.15.44](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html).  
     ```bash
     brew install awscli@2
     ```
@@ -149,7 +149,7 @@ Perform the following steps to install the needed software:
     # git version 2.45.0
 
     aws --version
-    # aws-cli/2.15.42 Python/3.11.9 Darwin/23.4.0 source/arm64 prompt/off
+    # aws-cli/2.15.44 Python/3.11.9 Darwin/23.4.0 source/arm64 prompt/off
 
     packer --version
     # Packer v1.10.3
@@ -197,7 +197,7 @@ Perform the following steps to install the needed software:
 
 1.	Install [Git 2.45.0](https://github.com/git-for-windows/git/releases/download/v2.45.0.windows.1/Git-2.45.0-64-bit.exe) for Windows 64-bit.
 
-2.	Install [AWS CLI 2.15.42](https://awscli.amazonaws.com/AWSCLIV2.msi) for Windows 64-bit.  
+2.	Install [AWS CLI 2.15.44](https://awscli.amazonaws.com/AWSCLIV2.msi) for Windows 64-bit.  
     Run the downloaded MSI installer and follow the on-screen instructions.  
 
     **NOTE:** For Windows users, the MSI installation package offers a familiar and convenient way to 
@@ -238,7 +238,7 @@ Perform the following steps to install the needed software:
     # git version 2.45.0.windows.1
 
     aws --version
-    # aws-cli/2.15.42 Python/3.11.6 Windows/10 exe/AMD64 prompt/off
+    # aws-cli/2.15.44 Python/3.11.6 Windows/10 exe/AMD64 prompt/off
 
     packer --version
     # 1.10.3
