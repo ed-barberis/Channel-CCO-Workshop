@@ -95,16 +95,16 @@ specific instructions for installing the required software are left as an exerci
 
 For macOS environments, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 4.2.20
+-	Homebrew 4.2.21
 -	Git 2.45.0
--	Amazon AWS CLI 2.15.44 (command-line interface)
+-	Amazon AWS CLI 2.15.46 (command-line interface)
 -	Packer 1.10.3
--	Terraform 1.8.2
+-	Terraform 1.8.3
 -	jq 1.7.1
 
 Perform the following steps to install the needed software:
 
-1.	Install the [Homebrew 4.2.20](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+1.	Install the [Homebrew 4.2.21](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     ```bash
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     ```
@@ -114,7 +114,7 @@ Perform the following steps to install the needed software:
     brew install git
     ```
 
-3.	Install [AWS CLI 2.15.44](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html).  
+3.	Install [AWS CLI 2.15.46](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html).  
     ```bash
     brew install awscli@2
     ```
@@ -125,7 +125,7 @@ Perform the following steps to install the needed software:
     brew install hashicorp/tap/packer
     ```
 
-5.	Install [Terraform 1.8.2](https://developer.hashicorp.com/terraform/install) for macOS 64-bit.  
+5.	Install [Terraform 1.8.3](https://developer.hashicorp.com/terraform/install) for macOS 64-bit.  
     ```bash
     brew tap hashicorp/tap
     brew install hashicorp/tap/terraform
@@ -143,19 +143,19 @@ Perform the following steps to install the needed software:
     ```bash
     # example output.
     brew --version
-    # Homebrew 4.2.20
+    # Homebrew 4.2.21
 
     git --version
     # git version 2.45.0
 
     aws --version
-    # aws-cli/2.15.44 Python/3.11.9 Darwin/23.4.0 source/arm64 prompt/off
+    # aws-cli/2.15.46 Python/3.11.9 Darwin/23.4.0 source/arm64 prompt/off
 
     packer --version
     # Packer v1.10.3
 
     terraform --version
-    # Terraform v1.8.2
+    # Terraform v1.8.3
     # on darwin_arm64
 
     jq --version
@@ -188,7 +188,7 @@ Here is a list of the recommended open source software to be installed on the ho
 -	Wget 1.21.2 (Ubuntu 64-bit only)
 -	Git 2.45.0
 -	Packer 1.10.3
--	Terraform 1.8.2
+-	Terraform 1.8.3
 -	jq 1.7.1
 
 ### Git Bash installation - Windows 64-Bit
@@ -197,7 +197,7 @@ Perform the following steps to install the needed software:
 
 1.	Install [Git 2.45.0](https://github.com/git-for-windows/git/releases/download/v2.45.0.windows.1/Git-2.45.0-64-bit.exe) for Windows 64-bit.
 
-2.	Install [AWS CLI 2.15.44](https://awscli.amazonaws.com/AWSCLIV2.msi) for Windows 64-bit.  
+2.	Install [AWS CLI 2.15.46](https://awscli.amazonaws.com/AWSCLIV2.msi) for Windows 64-bit.  
     Run the downloaded MSI installer and follow the on-screen instructions.  
 
     **NOTE:** For Windows users, the MSI installation package offers a familiar and convenient way to 
@@ -210,7 +210,7 @@ Perform the following steps to install the needed software:
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\bin`  
 
-4.	Install [Terraform 1.8.2](https://releases.hashicorp.com/terraform/1.8.2/terraform_1.8.2_windows_amd64.zip) for Windows 64-bit.  
+4.	Install [Terraform 1.8.3](https://releases.hashicorp.com/terraform/1.8.3/terraform_1.8.3_windows_amd64.zip) for Windows 64-bit.  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\bin`  
 
@@ -238,13 +238,13 @@ Perform the following steps to install the needed software:
     # git version 2.45.0.windows.1
 
     aws --version
-    # aws-cli/2.15.44 Python/3.11.6 Windows/10 exe/AMD64 prompt/off
+    # aws-cli/2.15.46 Python/3.11.6 Windows/10 exe/AMD64 prompt/off
 
     packer --version
     # 1.10.3
 
     terraform --version
-    # Terraform v1.8.2
+    # Terraform v1.8.3
 
     jq --version
     # jq-1.7.1
@@ -315,12 +315,12 @@ aws_cli_sig_file="${aws_cli_binary}.sig"
     sudo rm -i packer_1.10.3_linux_amd64.zip
     ```
 
-5.	Install [Terraform 1.8.2](https://developer.hashicorp.com/terraform/install) for Ubuntu 64-bit.  
+5.	Install [Terraform 1.8.3](https://developer.hashicorp.com/terraform/install) for Ubuntu 64-bit.  
     ```bash
     cd /usr/local/bin
-    sudo wget https://releases.hashicorp.com/terraform/1.8.2/terraform_1.8.2_linux_amd64.zip
-    sudo unzip terraform_1.8.2_linux_amd64.zip
-    sudo rm -i terraform_1.8.2_linux_amd64.zip
+    sudo wget https://releases.hashicorp.com/terraform/1.8.3/terraform_1.8.3_linux_amd64.zip
+    sudo unzip terraform_1.8.3_linux_amd64.zip
+    sudo rm -i terraform_1.8.3_linux_amd64.zip
     ```
 
 6.	Install [jq 1.7.1](https://jqlang.github.io/jq/) for macOS 64-bit.  
@@ -340,7 +340,7 @@ aws_cli_sig_file="${aws_cli_binary}.sig"
     # 1.10.3
 
     terraform --version
-    # Terraform v1.8.2
+    # Terraform v1.8.3
 
     jq --version
     # jq-1.7.1
