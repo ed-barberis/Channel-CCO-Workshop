@@ -21,7 +21,7 @@ kubectl delete namespace appdynamics
 echo "Done"
 
 echo "Removing Cert Manager"
-kubectl delete -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.5/cert-manager.yaml
+kubectl delete -f https://github.com/cert-manager/cert-manager/releases/download/v1.15.1/cert-manager.yaml
 echo "Done"
 
 echo "Cleaning up Helm Repo"
