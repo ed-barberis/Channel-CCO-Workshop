@@ -23,10 +23,10 @@
 #---------------------------------------------------------------------------------------------------
 
 # install docker compose v2 cli. -------------------------------------------------------------------
-dc_release="2.27.0"
+dc_release="2.29.0"
 dc_home="/usr/libexec/docker/cli-plugins"
 dc_binary="docker-compose-linux-x86_64"
-dc_sha256="f3ba3bf1e4ab18e96c2d36526a075a02a78fb5f8e80d3e3ca9c5bf256d81d0a0"
+dc_sha256="fb3f6c317056ec54e8756851663ca788521f7a9c60afb8a595bc7a05ffaa8951"
 
 # create docker cli-plugins directory (if needed).
 mkdir -p ${dc_home}
